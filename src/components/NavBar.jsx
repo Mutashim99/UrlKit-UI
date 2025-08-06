@@ -13,7 +13,7 @@ const NavBar = () => {
         {/* Right */}
         <div>
           <h1
-            className="text-4xl font-bold bg-clip-text text-transparent"
+            className="md:text-4xl text-3xl font-bold bg-clip-text text-transparent"
             style={{
               backgroundImage: "linear-gradient(to right, #EB568E,#144EE3)",
             }}
@@ -49,9 +49,9 @@ const NavBar = () => {
         {/* Button toggle logic for mobile nav */}
         <div className="md:hidden " onClick={handleIsMobileNav}>
           {isMobileNav ? (
-            <X className="size-10"></X>
+            <X className="md:size-10 size-8"></X>
           ) : (
-            <Menu className="size-10"></Menu>
+            <Menu className="md:size-10 size-8"></Menu>
           )}
         </div>
       </div>
@@ -62,7 +62,7 @@ const NavBar = () => {
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
-            transition={{ type: "spring", stiffness: 100, damping: 10 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             <button
               className="w-[123px] h-[50px] font-medium text-[16px] bg-[#181E29] rounded-[48px] border-2 border-[#353C4A] flex items-center justify-center gap-2 cursor-pointer mx-auto"
