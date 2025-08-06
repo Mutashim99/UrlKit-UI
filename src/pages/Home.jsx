@@ -1,12 +1,13 @@
 import React from "react";
 import cubes from "../assets/Cubes.png";
 import swirl from "../assets/Swirl.png";
-import NavBar from "../components/NavBar";
-import Hero from "../components/Hero";
+import NavBar from "@/components/NavBar";
+import Hero from "@/components/Hero";
+import LocalHistory from "@/components/LocalHistory";
 
 const Home = () => {
   return (
-    <div className="w-full bg-[#0B101B] h-screen text-[#C9CED6] relative">
+    <div className="w-full bg-[#0B101B] h-screen text-[#C9CED6] relative flex flex-col">
       <div
         className="absolute top-0 left-0 w-full z-0 h-screen bg-cover bg-center"
         style={{ backgroundImage: `url(${swirl})` }}
@@ -20,6 +21,9 @@ const Home = () => {
       <div className="relative z-20">
         <NavBar />
         <Hero />
+      </div>
+      <div className="relative z-20 flex-1 overflow-hidden">
+        <LocalHistory />
       </div>
     </div>
   );

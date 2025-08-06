@@ -8,7 +8,7 @@ const NavBar = () => {
     setIsMobileNav((prev) => !prev);
   };
   return (
-    <div className="bg-transparent text-white w-full max-w-7xl mx-auto  py-8 box-border ">
+    <div className="bg-transparent text-white w-full max-w-7xl mx-auto  py-4 box-border ">
       <div className="flex items-center justify-between h-16 px-4">
         {/* Right */}
         <div>
