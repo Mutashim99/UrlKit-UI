@@ -1,8 +1,9 @@
 import React from "react";
-import { Link , ArrowRight } from "lucide-react";
+import { Link, ArrowRight } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 const Hero = () => {
   return (
-    <div className="text-[#C9CED6] w-full py-5 md:py-20 px-4">
+    <div className="text-[#C9CED6] w-full py-5 md:py-15 px-4">
       <div className="flex flex-col items-center justify-center gap-6">
         <h1
           className="text-4xl sm:text-5xl md:text-6xl font-[800] text-center  py-3 text-transparent bg-clip-text"
@@ -32,8 +33,20 @@ const Hero = () => {
             }}
           >
             <span className="hidden md:inline ">Shorten Now!</span>
-            <span className="md:hidden flex items-center justify-center "><ArrowRight className="text-center" /></span>
+            <span className="md:hidden flex items-center justify-center ">
+              <ArrowRight className="text-center" />
+            </span>
           </button>
+        </div>
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center justify-center gap-4 font-medium tex-[#C9CED6] leading-normal">
+          <Switch />
+          <span>Use Custom Slug / Alias </span>
+        </div>
+        <div className="flex rounded-[48px] items-center justify-center h-10 bg-[#181E29] md:w-2xl border-4 border-[#353C4A]">
+            <h3 className="w-1/2 text-center font-medium text-sm md:text-[16px] h-full rounded-l-[48px] flex items-center justify-center bg-[#353C4A]">https://mysite.com/</h3>
+          <input type="text" placeholder="Enter your Slug/Alias Here" className="outline-0 w-1/2 px-2 h-full  text-sm md:text-[16px]"/>
+        </div>
         </div>
       </div>
     </div>
