@@ -5,7 +5,7 @@ const LocalHistory = () => {
   const mockLocalHistoryData = [
     {
       shortUrl: "https://my.site/abc123",
-      originalUrl: "https://example.com/article/how-to-code",
+      originalUrl: "https://notion.com/article/how-to-code",
       clicks: 15,
       status: "Active",
       createdAt: "2025-08-04T10:32:00.000Z",
@@ -20,6 +20,20 @@ const LocalHistory = () => {
     {
       shortUrl: "https://my.site/test456",
       originalUrl: "https://github.com/mutashimdev/url-shortener",
+      clicks: 0,
+      status: "Active",
+      createdAt: "2025-08-06T14:45:30.000Z",
+    },
+    {
+      shortUrl: "https://my.site/test456",
+      originalUrl: "https://facebook.com/mutashimdev/url-shortener",
+      clicks: 0,
+      status: "Active",
+      createdAt: "2025-08-06T14:45:30.000Z",
+    },
+    {
+      shortUrl: "https://my.site/test456",
+      originalUrl: "https://google.com/mutashimdev/url-shortener",
       clicks: 0,
       status: "Active",
       createdAt: "2025-08-06T14:45:30.000Z",

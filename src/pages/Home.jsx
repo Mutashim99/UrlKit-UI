@@ -25,6 +25,9 @@ const Home = () => {
       <div className="relative z-20 flex-1 overflow-hidden">
         <LocalHistory />
       </div>
+      <div className="z-30 w-full fixed bottom-0">
+        <div className="max-w-7xl mx-auto h-16 backdrop-blur-sm" style={{background:"linear-gradient(to-top, rgba(11, 16, 27, 0.00) 15.74%, rgba(11, 16, 27, 0.57) 50.38%)"}}/>
+      </div>
     </div>
   );
 };

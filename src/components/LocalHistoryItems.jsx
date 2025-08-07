@@ -1,26 +1,43 @@
-import React from 'react'
+import React from "react";
+import {Copy,CopyCheck} from 'lucide-react'
 
-const LocalHistoryItems = ({shortUrl,originalUrl,clicks,createdAt,status}) => {
+const LocalHistoryItems = ({
+  shortUrl,
+  originalUrl,
+  clicks,
+  createdAt,
+  status,
+}) => {
+
+  const domain = new URL(originalUrl).hostname;
+  const iconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
   return (
-    
-      <div className='hidden md:grid grid-cols-7 md:items-center text-center gap-1 bg-[#181e2938] backdrop-blur-[28px] md:h-[55px] text-[15px] font-bold text-[#C9CED6] md:mt-2 shadow-2xl shadow-[##0000001a] px-2'>
-         <div className="w-full col-span-2 overflow-hidden">
-            <p>{shortUrl}</p>
+    <div className="hidden md:grid grid-cols-7 md:items-center text-center gap-1 bg-[#181e2938] backdrop-blur-[28px] md:h-[55px] md:text-[15px] font-light text-[#C9CED6] md:mt-1 shadow-2xl shadow-[##0000001a] px-2">
+      <div className="w-full flex items-center justify-center gap-2 col-span-2 overflow-hidden ">
+        <p>{shortUrl}</p>
+        
+          <div className="bg-[#1c283fb0] size-9 flex items-center justify-center rounded-full">
+            <Copy className="size-5 cursor-pointer  text-[#C9CED6]" />
           </div>
-          <div className="w-full col-span-2 text-start overflow-hidden">
-            <p>{originalUrl}</p>
-          </div>
-          <div className="w-full">
-            <p>{clicks}</p>
-          </div>
-          <div className="w-full">
-            <p>{status}</p>
-          </div>
-          <div className="w-full">
-            <p>{new Date(createdAt).toLocaleString()}</p>
-          </div>
+          
       </div>
-  )
-}
+      <div className="w-full  col-span-2 flex items-center gap-3 text-start overflow-hidden">
+        <div>
+          <img src={iconUrl} alt="siteIcon" className="size-7" />
+        </div>
+        <p className="text-start w-full truncate  ">{originalUrl}</p>
+      </div>
+      <div className="w-full">
+        <p>{clicks}</p>
+      </div>
+      <div className="w-full">
+        <p>{status}</p>
+      </div>
+      <div className="w-full">
+        <p>{new Date(createdAt).toLocaleString()}</p>
+      </div>
+    </div>
+  );
+};
 
-export default LocalHistoryItems
+export default LocalHistoryItems;
