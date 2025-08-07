@@ -26,7 +26,18 @@ const Home = () => {
         <LocalHistory />
       </div>
       <div className="z-30 w-full fixed bottom-0">
-        <div className="max-w-7xl mx-auto h-16 backdrop-blur-sm" style={{background:"linear-gradient(to-top, rgba(11, 16, 27, 0.00) 15.74%, rgba(11, 16, 27, 0.57) 50.38%)"}}/>
+        <div
+          className="max-w-7xl mx-auto h-16 backdrop-blur-sm"
+          style={{
+            background:
+              "linear-gradient(360deg, #0b101b00, #0b101b91)",
+          }}
+        />
+      </div>
+      <div className="z-40 fixed bottom-0 w-full ">
+          <div className="max-w-7xl mx-auto h-16 flex items-center justify-center">
+            <p className="text-[#C9CED6] text-sm font-light"><span className="text-[#144EE3] underline ">Register Now</span> to enjoy Unlimited History</p>
+          </div>
       </div>
     </div>
   );
