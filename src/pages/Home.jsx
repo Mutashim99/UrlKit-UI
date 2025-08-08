@@ -1,9 +1,9 @@
 import React from "react";
 import cubes from "../assets/Cubes.png";
 import swirl from "../assets/Swirl.png";
-import NavBar from "@/components/NavBar";
-import Hero from "@/components/Hero";
-import LocalHistory from "@/components/LocalHistory";
+import NavBar from "@/components/home.components/NavBar";
+import Hero from "@/components/home.components/Hero";
+import LocalHistory from "@/components/home.components/LocalHistory";
 
 const Home = () => {
   return (

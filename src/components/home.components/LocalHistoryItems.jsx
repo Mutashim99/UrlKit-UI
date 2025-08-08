@@ -68,7 +68,7 @@ const LocalHistoryItems = ({
         <AccordionItem value="item-1">
           <AccordionTrigger
             className={
-              "bg-[#181e2938] backdrop-blur-[28px] h-[63px] text-[14px]  text-[#C9CED6] mt-1 shadow-2xl shadow-[#0000001a] py-6 px-4"
+              "bg-[#181e2938] backdrop-blur-[28px] h-[63px] text-[14px] md:hidden text-[#C9CED6] mt-1 shadow-2xl shadow-[#0000001a] py-6 px-4"
             }
           >
             {/* Left side: URL + Copy icon */}
