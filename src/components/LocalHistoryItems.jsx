@@ -106,8 +106,21 @@ const LocalHistoryItems = ({
               )}
             </div> */}
           </AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
+          <AccordionContent className="grid grid-cols-2 gap-y-2 px-4 text-sm">
+            <p className="font-medium text-muted-foreground ">Original URL:</p>
+            <div className="flex items-center col-span-1  overflow-hidden">
+              <img src={iconUrl} alt="siteIcon" className="size-5" />
+              <p className="truncate">{originalUrl}</p>
+            </div>
+
+            <p className="font-medium text-muted-foreground">Clicks:</p>
+            <p>{clicks}</p>
+
+            <p className="font-medium text-muted-foreground">Status:</p>
+            <p>{status}</p>
+
+            <p className="font-medium text-muted-foreground">Created At:</p>
+            <p>{new Date(createdAt).toLocaleString()}</p>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
