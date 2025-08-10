@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Trash, Pencil } from "lucide-react";
 import { toast } from "sonner";
 import {
   Accordion,
@@ -15,6 +15,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const DashboardDataItem = ({
   shortUrl,
@@ -68,16 +75,58 @@ const DashboardDataItem = ({
         <div className="w-full">
           <p>{new Date(createdAt).toLocaleString()}</p>
         </div>
-        <div className="w-full">
+        <div className="w-full flex gap-2 items-center justify-center">
           <Dialog>
-            <DialogTrigger>Open</DialogTrigger>
-            <DialogContent>
+            <DialogTrigger>
+              <Pencil className="h-4 w-4" />
+            </DialogTrigger>
+            <DialogContent className="bg-[#181E29] text-white border border-[#353C4A]">
               <DialogHeader>
+                <DialogTitle>Edit URL Status</DialogTitle>
+                <DialogDescription className="text-gray-400">
+                  Change the status of this URL and save your changes.
+                </DialogDescription>
+              </DialogHeader>
+
+              {/* Dropdown value={status} onValueChange={setStatus} */}
+              <Select>
+                <SelectTrigger className="w-full bg-[#0F1622] border border-[#353C4A] text-white">
+                  <SelectValue placeholder="Select status" />
+                </SelectTrigger>
+                <SelectContent className="bg-[#0F1622] text-white border border-[#353C4A]">
+                  <SelectItem value="ACTIVE">ACTIVE</SelectItem>
+                  <SelectItem value="EXPIRED">EXPIRED</SelectItem>
+                  <SelectItem value="PAUSED">PAUSED</SelectItem>
+                  <SelectItem value="BANNED">BANNED</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Save Button */}
+              <div className="space-y-4 mt-4">
+                <button className="w-full rounded-md bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm   font-medium transition-colors">
+                  Save
+                </button>
+              </div>
+            </DialogContent>
+          </Dialog>
+
+          <Dialog>
+            <DialogTrigger>
+              <Trash className="h-4 w-4" />
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader className={""}>
                 <DialogTitle>Are you absolutely sure?</DialogTitle>
                 <DialogDescription>
                   This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
+                  your URL and remove your URL data from our servers.
                 </DialogDescription>
+
+                <div className="space-y-4 mt-4">
+                  <button className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-sm font-medium transition-colors">
+                    Yes, Delete
+                  </button>
+                </div>
               </DialogHeader>
             </DialogContent>
           </Dialog>
