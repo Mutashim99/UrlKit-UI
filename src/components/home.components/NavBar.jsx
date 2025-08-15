@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowRightToLine, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import {Link} from 'react-router-dom'
 const NavBar = () => {
   const [isMobileNav, setIsMobileNav] = useState(false);
 
@@ -12,6 +13,7 @@ const NavBar = () => {
       <div className="flex items-center justify-between h-16 px-4">
         {/* Right */}
         <div>
+          <Link to={"/"}>
           <h1
             className="md:text-4xl text-3xl font-bold bg-clip-text text-transparent"
             style={{
@@ -20,10 +22,12 @@ const NavBar = () => {
           >
             UrlKit
           </h1>
+          </Link>
         </div>
         {/* Left */}
         <div className="hidden md:block">
           <div className="flex gap-6 ">
+           <Link to={"/auth/login"}>
             <button
               className="w-[123px] h-[50px] font-medium text-[16px] bg-[#181E29] rounded-[48px] border-2 border-[#353C4A] flex items-center justify-center gap-2 cursor-pointer"
               style={{
@@ -35,6 +39,8 @@ const NavBar = () => {
                 <ArrowRightToLine className="size-6 text-[#C9CED6]" />
               </span>
             </button>
+            </Link>
+            <Link to={"/auth/signup"}>
             <button
               className="w-[178px] h-[50px] bg-[#144EE3] text-center font-medium text-[16px] rounded-[48px] border-2 border-[#144EE3] cursor-pointer "
               style={{
@@ -43,6 +49,7 @@ const NavBar = () => {
             >
               Register Now
             </button>
+            </Link>
           </div>
         </div>
 
