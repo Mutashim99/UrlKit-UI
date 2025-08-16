@@ -122,7 +122,7 @@ const NavBar = () => {
           (isAuthenticated ? (
             // 🔹 Authenticated mobile UI goes here
             <motion.div
-              className="flex flex-col gap-6 bg-[#0B101B] w-full h-screen px-4 py-16"
+              className=" fixed top-20 left-0 right-0 bottom-0 flex flex-col gap-6 bg-[#0B101B] w-full h-screen px-4 py-16 z-50"
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
@@ -169,9 +169,9 @@ const NavBar = () => {
               </div>
             </motion.div>
           ) : (
-            // 🔹 Login / Register buttons
+            // Login / Register buttons
             <motion.div
-              className="flex flex-col gap-6 bg-[#0B101B] w-full h-screen px-4 py-16"
+              className="fixed top-20 left-0 right-0 bottom-0 flex flex-col gap-6 bg-[#0B101B] w-full h-screen px-4 py-16 z-50"
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}

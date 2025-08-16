@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import {  useNavigate, useSearchParams } from "react-router-dom";
+import {Link} from 'react-router-dom'
 
 const verifyEmail = () => {
   const [searchParams] = useSearchParams();
@@ -31,8 +32,8 @@ const verifyEmail = () => {
       {status}
       {requestFailed && (
         <p className="text-center text-sm mt-4">
-          Didn't recieved the email? {" "}
-          <Link to="/" className="text-blue-500 hover:underline">
+          Verification link expired? {" "}
+          <Link to="/resend-verification-email" className="text-blue-500 hover:underline">
             resend email
           </Link>
         </p>

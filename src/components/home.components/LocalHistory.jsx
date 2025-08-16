@@ -39,6 +39,27 @@ const LocalHistory = () => {
       status: "Active",
       createdAt: "2025-08-06T14:45:30.000Z",
     },
+    {
+      shortUrl: "https://my.site/test456",
+      originalUrl: "https://google.com/mutashimdev/url-shortener",
+      clicks: 0,
+      status: "Active",
+      createdAt: "2025-08-06T14:45:30.000Z",
+    },
+    {
+      shortUrl: "https://my.site/test456",
+      originalUrl: "https://google.com/mutashimdev/url-shortener",
+      clicks: 0,
+      status: "Active",
+      createdAt: "2025-08-06T14:45:30.000Z",
+    },
+    {
+      shortUrl: "https://my.site/test456",
+      originalUrl: "https://google.com/mutashimdev/url-shortener",
+      clicks: 0,
+      status: "Active",
+      createdAt: "2025-08-06T14:45:30.000Z",
+    },
   ];
 
   return (
