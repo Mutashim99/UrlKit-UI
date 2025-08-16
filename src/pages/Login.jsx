@@ -18,6 +18,10 @@ const Login = () => {
       setTimeout(async() => {
        await  fetchCurrentUser();
       }, 0);
+
+      setTimeout(()=>{
+        navigate("/dashboard")
+      },0)
       console.log(res);
     } catch (e) {
       console.log(e);
@@ -60,7 +64,7 @@ const Login = () => {
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
           >
-            Create Account
+            Login
           </button>
           {msg && <p>{msg}</p>}
         </form>

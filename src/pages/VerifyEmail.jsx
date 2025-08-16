@@ -1,9 +1,44 @@
-import React from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
 
 const verifyEmail = () => {
-  return (
-    <div>verifyEmail</div>
-  )
-}
+  const [searchParams] = useSearchParams();
+  const [status, setStatus] = useState("Verifying....");
+  const navigate = useNavigate();
+  const [requestFailed, setRequestFailed] = useState(false);
 
-export default verifyEmail
+  useEffect(() => {
+    const verifyEmail = async () => {
+      try {
+        const token = searchParams.get("token");
+        const res = await axios.get(`/auth/verify-email?token=${token}`);
+
+        setStatus("Email verified! Redirecting...");
+        setTimeout(() => navigate("/auth/login"), 2000);
+      } catch (error) {
+        setRequestFailed(true);
+        setStatus(`Verification failed : ${error.response.data.message}`);
+        console.log(error);
+      }
+    };
+
+    verifyEmail();
+  }, [searchParams, navigate]);
+
+  return (
+    <div className="w-full bg-[#0B101B] h-screen text-[#C9CED6] flex flex-col items-center  p-4 text-3xl">
+      {status}
+      {requestFailed && (
+        <p className="text-center text-sm mt-4">
+          Didn't recieved the email? {" "}
+          <Link to="/" className="text-blue-500 hover:underline">
+            resend email
+          </Link>
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default verifyEmail;

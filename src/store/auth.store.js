@@ -25,6 +25,11 @@ const useAuthStore = create((set) => ({
       set({ isAuthenticated: false, currentUser: null, loading: false });
     }
   },
+
+  logout : async ()=>{
+    await axios.post("/auth/logout")
+    set({isAuthenticated:false,currentUser:null,loading:false})
+  }
 }));
 
 export default useAuthStore;

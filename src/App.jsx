@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import VerifyEmail from "./pages/VerifyEmail"
 import useAuthStore from "./store/auth.store";
 import ProtectedRoute from "./utils/ProtectedRoute";
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/signup" element={<Signup />} />
+        <Route path="/verify-email" element={<VerifyEmail/>} />
       </Routes>
     </>
   );
