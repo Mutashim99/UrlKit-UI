@@ -6,8 +6,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import UrlInput from "../UrlInput";
+import { useNavigate } from "react-router-dom";
+import useAuthStore from "@/store/auth.store";
 
 const DashboardNav = () => {
+  const { loading, logout, currentUser } = useAuthStore();
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout();
+    navigate("/auth/login")
+  };
   return (
     <div className="relative flex flex-col gap-4 sm:gap-0 ">
       {/* uppar ayega ye dono mein: Logo and Button */}
@@ -27,7 +36,7 @@ const DashboardNav = () => {
             <AccordionTrigger className="h-auto py-2 w-[110px] gap-1 px-2 sm:min-w-[140px] bg-[#181E29] rounded-[48px] flex items-center justify-center border-2 border-[#353C4A]">
               <div className="flex flex-col truncate px-1 max-w-[2/3]">
                 <p className="text-[10px] font-extralight">Welcome</p>
-                <p className="font-bold truncate">Useafasfr</p>
+                <p className="font-bold truncate">{currentUser.name}</p>
               </div>
             </AccordionTrigger>
             <AccordionContent
@@ -36,7 +45,7 @@ const DashboardNav = () => {
                 boxShadow: "10px 9px 22px 0 rgba(20, 78, 227, 0.38)",
               }}
             >
-              <button className="block w-full text-left px-4 cursor-pointer py-2 text-sm">
+              <button onClick={()=>handleLogout()} className="block w-full text-left px-4 cursor-pointer py-2 text-sm">
                 Logout
               </button>
             </AccordionContent>

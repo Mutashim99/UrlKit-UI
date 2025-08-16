@@ -28,7 +28,7 @@ const useAuthStore = create((set) => ({
 
   logout : async ()=>{
     await axios.post("/auth/logout")
-    set({isAuthenticated:false,currentUser:null,loading:false})
+    set({isAuthenticated:false,currentUser:null})
   }
 }));
 
