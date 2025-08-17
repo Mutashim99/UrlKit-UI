@@ -8,7 +8,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!msg) return;
@@ -27,9 +27,10 @@ const Signup = () => {
         setName("");
         setEmail("");
         setPassword("");
-        setMsg("Signed Up successfully! Please check your inbox for email verification");
+        setMsg(
+          "Signed Up successfully! Please check your inbox for email verification"
+        );
 
-        
         setTimeout(() => {
           navigate("/auth/login");
         }, 6000);
@@ -41,10 +42,10 @@ const Signup = () => {
 
   return (
     <div className="w-full bg-[#0B101B] h-screen text-[#C9CED6] flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-2xl p-4 bg-[#181E29] rounded-xl h-2/3 flex flex-col items-center justify-center ">
+      <div className="w-full md:min-h-[600px] max-w-2xl p-6 bg-[#181E29] rounded-xl flex flex-col items-center justify-center gap-3 ">
         <div>
           <h1
-            className="md:text-4xl text-3xl font-bold bg-clip-text text-transparent"
+            className="md:text-5xl text-3xl font-bold bg-clip-text text-transparent mb-4"
             style={{
               backgroundImage: "linear-gradient(to right, #EB568E,#144EE3)",
             }}
@@ -52,8 +53,8 @@ const Signup = () => {
             UrlKit
           </h1>
         </div>
-        <h2>Sign Up</h2>
-        <form className="space-y-4" onSubmit={handleSignup}>
+        <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
+        <form className="space-y-4 w-full max-w-xl flex flex-col items-center justify-center gap-4" onSubmit={handleSignup}>
           <input
             type="text"
             name="name"
@@ -83,13 +84,13 @@ const Signup = () => {
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+            className="w-full cursor-pointer font-bold bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
           >
             Create Account
           </button>
-          {msg && <p>{msg}</p>}
+          {msg && <p className="mt-4 text-sm font-bold">{msg}</p>}
         </form>
-        <p className="text-center text-sm mt-4">
+        <p className="text-center text-sm mt-4 font-bold">
           Already have an account?{" "}
           <Link to="/auth/login" className="text-blue-500 hover:underline">
             Log In

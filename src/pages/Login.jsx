@@ -47,18 +47,18 @@ const Login = () => {
 
   return (
     <div className="w-full bg-[#0B101B] h-screen text-[#C9CED6] flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-2xl p-6 bg-[#181E29] rounded-xl flex flex-col items-center justify-center">
+      <div className="w-full md:min-h-[600px] max-w-2xl p-6 bg-[#181E29] rounded-xl flex flex-col items-center justify-center gap-3">
         <h1
-          className="md:text-4xl text-3xl font-bold bg-clip-text text-transparent mb-4"
+          className="md:text-5xl text-3xl font-bold bg-clip-text text-transparent mb-4"
           style={{
             backgroundImage: "linear-gradient(to right, #EB568E,#144EE3)",
           }}
         >
           UrlKit
         </h1>
-        <h2 className="text-xl mb-4">Log In</h2>
+        <h2 className="text-2xl font-bold mb-4">Log In</h2>
 
-        <form className="space-y-4 w-full" onSubmit={handleLogin}>
+        <form className="space-y-4 w-full max-w-xl flex flex-col items-center justify-center gap-4" onSubmit={handleLogin}>
           <input
             type="email"
             name="email"
@@ -79,7 +79,7 @@ const Login = () => {
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+            className="w-full cursor-pointer font-bold bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
           >
             {loginLoading ? "..." : "Login"}
           </button>
@@ -87,7 +87,7 @@ const Login = () => {
 
         {msg && (
           <p
-            className={`mt-4 text-sm ${
+            className={`mt-4 text-sm font-bold${
               msgType === "success" ? "text-green-400" : "text-red-400"
             }`}
           >
@@ -96,14 +96,17 @@ const Login = () => {
         )}
 
         {resendVerification && (
-          <p className="text-center text-sm mt-4">
-            <Link to="/resend-verification-email" className="text-blue-500 hover:underline">
+          <p className="text-center font-bold text-sm mt-4">
+            <Link
+              to="/resend-verification-email"
+              className="text-blue-500 hover:underline"
+            >
               Resend email verification
             </Link>
           </p>
         )}
 
-        <p className="text-center text-sm mt-4">
+        <p className="text-center text-sm mt-4 font-bold">
           Don't have an account?{" "}
           <Link to="/auth/signup" className="text-blue-500 hover:underline">
             Sign Up
