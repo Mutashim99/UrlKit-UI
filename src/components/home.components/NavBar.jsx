@@ -10,7 +10,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 const NavBar = () => {
-  const { isAuthenticated, loading, logout, currentUser } = useAuthStore();
+  const currentUser = useAuthStore((state) => state.currentUser);
+  const logout = useAuthStore((state) => state.logout);
+  const loading = useAuthStore((state) => state.loading);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const [isMobileNav, setIsMobileNav] = useState(false);
 
   const handleIsMobileNav = () => {
@@ -177,25 +180,29 @@ const NavBar = () => {
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <button
-                className="w-[123px] h-[50px] font-medium text-[16px] bg-[#181E29] rounded-[48px] border-2 border-[#353C4A] flex items-center justify-center gap-2 cursor-pointer mx-auto"
-                style={{
-                  boxShadow: "0 4px 10px 0 rgba(0, 0, 0, 0.10)",
-                }}
-              >
-                Login{" "}
-                <span>
-                  <ArrowRightToLine className="size-6 text-[#C9CED6]" />
-                </span>
-              </button>
-              <button
-                className="w-[178px] h-[50px] bg-[#144EE3] text-center font-medium text-[16px] rounded-[48px] mx-auto border-2 border-[#144EE3] cursor-pointer "
-                style={{
-                  boxShadow: "10px 9px 22px 0 rgba(20, 78, 227, 0.38)",
-                }}
-              >
-                Register Now
-              </button>
+              <Link to={"/auth/login"}>
+                <button
+                  className="w-[123px] h-[50px] font-medium text-[16px] bg-[#181E29] rounded-[48px] border-2 border-[#353C4A] flex items-center justify-center gap-2 cursor-pointer mx-auto"
+                  style={{
+                    boxShadow: "0 4px 10px 0 rgba(0, 0, 0, 0.10)",
+                  }}
+                >
+                  Login{" "}
+                  <span>
+                    <ArrowRightToLine className="size-6 text-[#C9CED6]" />
+                  </span>
+                </button>
+              </Link>
+              <Link to={"/auth/signup"}>
+                <button
+                  className="w-[178px] h-[50px] bg-[#144EE3] text-center font-medium text-[16px] rounded-[48px] mx-auto border-2 border-[#144EE3] flex items-center justify-center cursor-pointer "
+                  style={{
+                    boxShadow: "10px 9px 22px 0 rgba(20, 78, 227, 0.38)",
+                  }}
+                >
+                  Register Now
+                </button>
+              </Link>
             </motion.div>
           ))}
       </AnimatePresence>

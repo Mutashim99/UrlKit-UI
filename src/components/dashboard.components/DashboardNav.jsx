@@ -10,12 +10,15 @@ import { useNavigate } from "react-router-dom";
 import useAuthStore from "@/store/auth.store";
 
 const DashboardNav = () => {
-  const { loading, logout, currentUser } = useAuthStore();
-  const navigate = useNavigate()
+  const currentUser = useAuthStore((state) => state.currentUser);
+  const logout = useAuthStore((state) => state.logout);
+  const loading = useAuthStore((state) => state.loading);
+
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    navigate("/auth/login")
+    navigate("/auth/login");
   };
   return (
     <div className="relative flex flex-col gap-4 sm:gap-0 ">
@@ -45,7 +48,10 @@ const DashboardNav = () => {
                 boxShadow: "10px 9px 22px 0 rgba(20, 78, 227, 0.38)",
               }}
             >
-              <button onClick={()=>handleLogout()} className="block w-full text-left px-4 cursor-pointer py-2 text-sm">
+              <button
+                onClick={handleLogout}
+                className="block w-full text-left px-4 cursor-pointer py-2 text-sm"
+              >
                 Logout
               </button>
             </AccordionContent>

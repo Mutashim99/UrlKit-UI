@@ -5,12 +5,14 @@ import Dashboard from "./pages/Dashboard";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import VerifyEmail from "./pages/VerifyEmail"
+import VerifyEmail from "./pages/VerifyEmail";
 import useAuthStore from "./store/auth.store";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import ResendVerificationEmail from "./pages/ResendVerificationEmail";
 const App = () => {
   const fetchCurrentUser = useAuthStore((s) => s.fetchCurrentUser);
+
+
   useEffect(() => {
     fetchCurrentUser();
   }, [fetchCurrentUser]);
@@ -30,8 +32,11 @@ const App = () => {
         />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/signup" element={<Signup />} />
-        <Route path="/verify-email" element={<VerifyEmail/>} />
-        <Route path="/resend-verification-email" element={<ResendVerificationEmail/>} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route
+          path="/resend-verification-email"
+          element={<ResendVerificationEmail />}
+        />
       </Routes>
     </>
   );
