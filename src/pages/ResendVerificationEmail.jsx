@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import NavBar from "@/components/home.components/NavBar";
+import { Link } from "react-router-dom";
 
 const ResendVerificationEmail = () => {
   const [email, setEmail] = useState("");
@@ -45,6 +45,8 @@ const ResendVerificationEmail = () => {
           </button>
         </form>
         {msg && <p className="mt-4 text-sm text-center">{msg}</p>}
+
+        <p className="text-center text-sm mt-4 font-medium">Registered Wrong email? <Link to={"/auth/signup"} className="text-blue-500 hover:underline">Signup again</Link></p>
       </div>
     </div>
   );

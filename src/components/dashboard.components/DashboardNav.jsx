@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import UrlInput from "../UrlInput";
+import UrlInput from "../../utils/UrlInput";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "@/store/auth.store";
 

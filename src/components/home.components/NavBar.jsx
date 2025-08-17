@@ -99,7 +99,7 @@ const NavBar = () => {
               </Link>
               <Link to={"/auth/signup"}>
                 <button
-                  className="w-[178px] h-[50px] bg-[#144EE3] text-center font-medium text-[16px] rounded-[48px] border-2 border-[#144EE3] cursor-pointer "
+                  className="w-[178px] h-[50px] bg-[#144EE3] text-center font-medium text-[16px] rounded-[48px] border-2 border-[#144EE3] cursor-pointer  hover:bg-[#144eec]"
                   style={{
                     boxShadow: "10px 9px 22px 0 rgba(20, 78, 227, 0.38)",
                   }}

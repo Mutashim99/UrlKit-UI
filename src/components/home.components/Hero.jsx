@@ -2,7 +2,7 @@ import React from "react";
 import { Link, ArrowRight } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { AnimatePresence, motion } from "framer-motion";
-import UrlInput from "../UrlInput";
+import UrlInput from "../../utils/UrlInput";
 const Hero = () => {
   return (
     <div className="text-[#C9CED6] w-full py-5 md:pt-15 px-4">
