@@ -1,66 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import LocalHistoryItems from "./LocalHistoryItems";
+import { useSlugStore } from "@/store/slug.store";
+import axios from "axios";
+import LocalHistorySkeleton from "../skeletons/LocalHistorySkeleton";
 
 const LocalHistory = () => {
-  const mockLocalHistoryData = [
-    {
-      shortUrl: "https://my.site/abc123",
-      originalUrl: "https://daraz.pk/article/how-to-code",
-      clicks: 15,
-      status: "Active",
-      createdAt: "2025-08-04T10:32:00.000Z",
-    },
-    {
-      shortUrl: "https://my.site/xyz789",
-      originalUrl:
-        "https://youtube.com/watch?v=dQw4w9WgXcQafagasgasgagasgsagasgsagqwygqdsgsahy",
-      clicks: 102,
-      status: "Expired",
-      createdAt: "2025-07-28T08:15:45.000Z",
-    },
-    {
-      shortUrl: "https://my.site/test456",
-      originalUrl: "https://github.com/mutashimdev/url-shortener",
-      clicks: 0,
-      status: "Active",
-      createdAt: "2025-08-06T14:45:30.000Z",
-    },
-    {
-      shortUrl: "https://my.site/test456",
-      originalUrl: "https://facebook.com/mutashimdev/url-shortener",
-      clicks: 0,
-      status: "Active",
-      createdAt: "2025-08-06T14:45:30.000Z",
-    },
-    {
-      shortUrl: "https://my.site/test456",
-      originalUrl: "https://google.com/mutashimdev/url-shortener",
-      clicks: 0,
-      status: "Active",
-      createdAt: "2025-08-06T14:45:30.000Z",
-    },
-    {
-      shortUrl: "https://my.site/test456",
-      originalUrl: "https://google.com/mutashimdev/url-shortener",
-      clicks: 0,
-      status: "Active",
-      createdAt: "2025-08-06T14:45:30.000Z",
-    },
-    {
-      shortUrl: "https://my.site/test456",
-      originalUrl: "https://google.com/mutashimdev/url-shortener",
-      clicks: 0,
-      status: "Active",
-      createdAt: "2025-08-06T14:45:30.000Z",
-    },
-    {
-      shortUrl: "https://my.site/test456",
-      originalUrl: "https://google.com/mutashimdev/url-shortener",
-      clicks: 0,
-      status: "Active",
-      createdAt: "2025-08-06T14:45:30.000Z",
-    },
-  ];
+  const [loadinglocalhistory, setLoadinglocalhistory] = useState(false)
+  const [localHistoryData, setlocalHistoryData] = useState([]);
+
+  const slugs = useSlugStore((state) => state.slugs);
+  const getLocalHistory = async () => {
+    setLoadinglocalhistory(true)
+    try {
+      const res = await axios.post("/url/history/local", { slugs: slugs });
+      setlocalHistoryData(res.data);
+      setLoadinglocalhistory(false)
+    } catch (e) {
+      setLoadinglocalhistory(false)
+    }
+  };
+  useEffect(() => {
+    if (slugs.length > 0) {
+      getLocalHistory();
+    }
+  }, [slugs]);
 
   return (
     <div className="w-full md:py-4 px-4">
@@ -88,9 +51,18 @@ const LocalHistory = () => {
             <p className="mx-auto">Short Link</p>
           </div>
         </div>
-        {mockLocalHistoryData.map((url, index) => (
-          <LocalHistoryItems key={index} {...url} />
-        ))}
+        <div>
+          {loadinglocalhistory ? <LocalHistorySkeleton /> : localHistoryData.length === 0 ? (
+            <p className="text-center bg-[#0e131ee0] font-medium  text-[#C9CED6] text-sm py-8">
+              You haven’t created any short URLs yet. Start creating links to
+              see your history here.
+            </p>
+          ) : (
+            localHistoryData.map((url, index) => (
+              <LocalHistoryItems key={index} {...url} />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

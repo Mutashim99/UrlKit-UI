@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check ,Globe} from "lucide-react";
 import { toast } from "sonner";
 import {
   Accordion,
@@ -8,15 +8,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 const LocalHistoryItems = ({
-  shortUrl,
-  originalUrl,
-  clicks,
+  shortSlug,
+  orignalUrl,
+  clickCount,
   createdAt,
   status,
 }) => {
   const [copied, setCopied] = useState(false);
-  const domain = new URL(originalUrl).hostname;
+  const domain = new URL(orignalUrl).hostname ;
   const iconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
+  const shortUrl  = `http://localhost:5173/${shortSlug}`
 
   const handleCopy = () => {
     try {
@@ -51,10 +52,10 @@ const LocalHistoryItems = ({
           <div>
             <img src={iconUrl} alt="siteIcon" className="size-7" />
           </div>
-          <p className="text-start w-full truncate  ">{originalUrl}</p>
+          <p className="text-start w-full truncate  ">{orignalUrl}</p>
         </div>
         <div className="w-full">
-          <p>{clicks}</p>
+          <p>{clickCount}</p>
         </div>
         <div className="w-full">
           <p>{status}</p>
@@ -110,11 +111,11 @@ const LocalHistoryItems = ({
             <p className="font-medium text-muted-foreground ">Original URL:</p>
             <div className="flex items-center col-span-1  overflow-hidden">
               <img src={iconUrl} alt="siteIcon" className="size-5" />
-              <p className="truncate">{originalUrl}</p>
+              <p className="truncate">{orignalUrl}</p>
             </div>
 
             <p className="font-medium text-muted-foreground">Clicks:</p>
-            <p>{clicks}</p>
+            <p>{clickCount}</p>
 
             <p className="font-medium text-muted-foreground">Status:</p>
             <p>{status}</p>

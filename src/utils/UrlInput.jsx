@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { LoaderCircle } from "lucide-react";
+import { useSlugStore } from "@/store/slug.store";
 
 const UrlInput = () => {
   const [originalUrl, setOriginalUrl] = useState("");
@@ -35,6 +36,7 @@ const UrlInput = () => {
     message: "",
     submittedUrl: "",
   });
+  const saveSlugs = useSlugStore((state) => state.addSlug);
 
   // const handleUrlSafety = async () => {
   //   seturlResponseLoading(true);
@@ -144,6 +146,8 @@ const UrlInput = () => {
         {
           loading: "Shortening your link...",
           success: (res) => {
+            console.log(res);
+            saveSlugs(res.data.slug)
             setOriginalUrl("");
             setCustomSlug("");
             setExpiresAt("");
@@ -160,6 +164,8 @@ const UrlInput = () => {
       console.error(error);
     }
   };
+
+  
 
   return (
     <>
@@ -179,7 +185,9 @@ const UrlInput = () => {
             boxShadow: "10px 9px 22px 0 rgba(20, 78, 227, 0.38)",
           }}
         >
-          {urlResponseLoading ? <LoaderCircle className="text-center animate-spin" /> : (
+          {urlResponseLoading ? (
+            <LoaderCircle className="text-center animate-spin" />
+          ) : (
             <div>
               <span className="hidden md:inline ">Shorten Now!</span>
               <span className="md:hidden flex items-center justify-center ">
@@ -196,7 +204,8 @@ const UrlInput = () => {
             <AlertDialogTitle>Unsafe URL Warning </AlertDialogTitle>
             <AlertDialogDescription className="text-[#C9CED6]  font-bold flex flex-col gap-3 text-sm ">
               {urlSafetyResponse.message}
-              <p>Continue anyway?</p>
+              <br />
+              Continue anyway?
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -207,7 +216,7 @@ const UrlInput = () => {
               onClick={() => {
                 setShowUnsafeDialog(false);
                 setOriginalUrl("");
-                seturlResponseLoading(false)
+                seturlResponseLoading(false);
               }}
             >
               Cancel
@@ -215,8 +224,8 @@ const UrlInput = () => {
             <AlertDialogAction
               onClick={async () => {
                 setShowUnsafeDialog(false);
-                await handleShorten(); 
-                seturlResponseLoading(false)
+                await handleShorten();
+                seturlResponseLoading(false);
               }}
               className={
                 " bg-[#144EE3] text-center font-medium text-[16px] rounded-[48px] border-2 border-[#144EE3] cursor-pointer  hover:bg-[#144eec]"
