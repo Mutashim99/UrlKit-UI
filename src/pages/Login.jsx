@@ -2,6 +2,8 @@ import useAuthStore from "@/store/auth.store";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { LoaderCircle } from "lucide-react";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -78,10 +80,11 @@ const Login = () => {
             required
           />
           <button
+          disabled={loginLoading}
             type="submit"
-            className="w-full cursor-pointer font-bold bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+            className="w-full cursor-pointer font-bold bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition flex items-center justify-center"
           >
-            {loginLoading ? "..." : "Login"}
+            {loginLoading ? <LoaderCircle className=" text-center animate-spin"/> : "Login"}
           </button>
         </form>
 
