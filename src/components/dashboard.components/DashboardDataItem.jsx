@@ -18,7 +18,8 @@ import {
 
 const DashboardDataItem = ({
   urls,
-  onEdit
+  onEdit,
+  onDelete
 }) => {
   const [copied, setCopied] = useState(false);
   const domain = new URL(urls.orignalUrl).hostname;
@@ -66,31 +67,11 @@ const DashboardDataItem = ({
           <p>{new Date(urls.createdAt).toLocaleString()}</p>
         </div>
         <div className="w-full flex gap-2 items-center justify-center">
-          {/* Edit(pencil) popup dialog modal */}
 
           <Pencil onClick={()=>{onEdit(urls)}} className="h-4 w-4" />
+          <Trash onClick={()=>{onDelete(urls)}} className="h-4 w-4" />
 
-          {/* Delete popup dialog modal */}
-          {/* <Dialog>
-            <DialogTrigger>
-              <Trash className="h-4 w-4" />
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader className={""}>
-                <DialogTitle>Are you absolutely sure?</DialogTitle>
-                <DialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  your URL and remove your URL data from our servers.
-                </DialogDescription>
-
-                <div className="space-y-4 mt-4">
-                  <button className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-sm font-medium transition-colors">
-                    Yes, Delete
-                  </button>
-                </div>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog> */}
+         
         </div>
       </div>
 

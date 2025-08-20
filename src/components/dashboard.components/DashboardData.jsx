@@ -4,19 +4,21 @@ import EditDialog from "./EditDialog";
 import axios from "axios";
 import LocalHistorySkeleton from "../skeletons/LocalHistorySkeleton";
 import { useDashboardStore } from "@/store/dashboard.store";
-
+import DeleteDialog from "./DeleteDialog";
 
 const DashboardData = () => {
   // const [urls, setUrls] = useState([]);
   // const [loadingurls, setLoadingurls] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
   const [selectedUrl, setSelectedUrl] = useState(null);
-  const [updateLoading, setUpdateLoading] = useState(false)
-  const {urls,loadingUrls,getUrls} = useDashboardStore()
+  const [updateLoading, setUpdateLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false)
+  const { urls, loadingUrls, getUrls } = useDashboardStore();
 
   // const getUrls = async () => {
   //   setLoadingurls(true);
-    
+
   //   try {
   //     const res = await axios.get("user/dashboard/urls");
   //     setUrls(res.data);
@@ -36,30 +38,43 @@ const DashboardData = () => {
     setSelectedUrl(currentUrl);
     setEditOpen(true);
   };
-  const handleSave = async (newStatus) => {
-    setUpdateLoading(true)
+  const handleDelete = (currentUrl) => {
+    setSelectedUrl(currentUrl);
+    setDeleteOpen(true);
+  };
+  const handleEditSave = async (newStatus) => {
+    setUpdateLoading(true);
     try {
       const res = await axios.patch(`/user/dashboard/url/${selectedUrl.id}`, {
         newStatus: newStatus,
       });
-      setUpdateLoading(false)
+      
+      await getUrls();
       console.log(res);
     } catch (e) {
-      setUpdateLoading(false)
+      
       console.log(e);
     }
-    setUrls((prev) =>
-      prev.map((u) =>
-        u.id === selectedUrl.id ? { ...u, status: newStatus } : u
-      )
-    );
+    setUpdateLoading(false);
     setEditOpen(false);
+  };
+
+  const handleDeleteSave = async () => {
+    setDeleteLoading(true)
+    try {
+      const res = await axios.delete(`/user/dashboard/url/${selectedUrl.id}`);
+      console.log(res);
+      await getUrls();
+    } catch (e) {
+      console.log(e);
+    }
+    setDeleteLoading(false)
+    setDeleteOpen(false);
   };
 
   return (
     <div className="w-full py-4 px-4 md:min-h-[calc(100vh-364px)] min-h-[calc(100vh-361px)]">
       <div className="max-w-7xl mx-auto">
-        {/* heading for pc */}
         <div className="hidden md:grid grid-cols-7 items-center text-center gap-1 bg-[#0d1117] md:h-[55px] text-[15px] font-bold text-[#C9CED6] rounded-t-xl shadow-2xl shadow-[#0000001a]">
           <div className="w-full col-span-2">
             <p>Short Link</p>
@@ -77,7 +92,6 @@ const DashboardData = () => {
             <p>Action</p>
           </div>
         </div>
-        {/* heading for mobile */}
         <div className="mx-auto md:hidden">
           <div className=" bg-[#0D1117] h-[55px] text-[15px] font-bold text-[#C9CED6] rounded-t-xl shadow-2xl shadow-[#0000001a] flex items-center ">
             <p className="mx-auto">Short Link</p>
@@ -98,6 +112,7 @@ const DashboardData = () => {
                 key={urls.id}
                 urls={urls}
                 onEdit={handleEdit}
+                onDelete={handleDelete}
               />
             ))
           )}
@@ -115,7 +130,16 @@ const DashboardData = () => {
             setEditOpen(false);
           }}
           url={selectedUrl}
-          onSave={handleSave}
+          onSave={handleEditSave}
+        />
+
+        <DeleteDialog
+        deleteLoading={deleteLoading}
+          open={deleteOpen}
+          onClose={() => {
+            setDeleteOpen(false);
+          }}
+          onSave={handleDeleteSave}
         />
       </div>
     </div>
