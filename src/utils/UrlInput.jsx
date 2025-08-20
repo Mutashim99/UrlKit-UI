@@ -22,6 +22,7 @@ import {
 import { toast } from "sonner";
 import { LoaderCircle } from "lucide-react";
 import { useSlugStore } from "@/store/slug.store";
+import { useDashboardStore } from "@/store/dashboard.store";
 
 const UrlInput = () => {
   const [originalUrl, setOriginalUrl] = useState("");
@@ -36,6 +37,7 @@ const UrlInput = () => {
     message: "",
     submittedUrl: "",
   });
+  const getUrls = useDashboardStore((state) => state.getUrls);
   const saveSlugs = useSlugStore((state) => state.addSlug);
 
   // const handleUrlSafety = async () => {
@@ -146,6 +148,7 @@ const UrlInput = () => {
         {
           loading: "Shortening your link...",
           success: (res) => {
+            getUrls()
             console.log(res);
             saveSlugs(res.data.slug)
             setOriginalUrl("");

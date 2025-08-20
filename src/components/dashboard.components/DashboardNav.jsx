@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import UrlInput from "../../utils/UrlInput";
-import { useNavigate } from "react-router-dom";
+import { Link, Links, useNavigate } from "react-router-dom";
 import useAuthStore from "@/store/auth.store";
 
 const DashboardNav = () => {
@@ -25,6 +25,7 @@ const DashboardNav = () => {
       {/* uppar ayega ye dono mein: Logo and Button */}
       <div className="flex w-full items-center justify-between">
         <div className="text-xl font-bold">
+          <Link to={"/"}>
           <h1
             className="md:text-4xl text-3xl font-bold bg-clip-text text-transparent"
             style={{
@@ -33,6 +34,7 @@ const DashboardNav = () => {
           >
             UrlKit
           </h1>
+          </Link>
         </div>
         <Accordion type="single" collapsible className="relative">
           <AccordionItem value="profile">

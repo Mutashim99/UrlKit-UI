@@ -21,26 +21,26 @@ const DashboardDataItem = ({
   onEdit
 }) => {
   const [copied, setCopied] = useState(false);
-  const domain = new URL(urls.originalUrl).hostname;
+  const domain = new URL(urls.orignalUrl).hostname;
   const iconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
-
+  const shortUrl  = `http://localhost:5173/${urls.shortSlug}`
   const handleCopy = () => {
     try {
-      navigator.clipboard.writeText(urls.shortUrl);
+      navigator.clipboard.writeText(shortUrl);
       setCopied(true);
       toast.success("Copied URL to clipboard!");
       setTimeout(() => {
         setCopied(false);
       }, 2000);
     } catch (e) {
-      console.log(e, "cant copy the text ", urls.shortUrl);
+      console.log(e, "cant copy the text ", shortUrl);
     }
   };
   return (
     <>
       <div className="hidden md:grid grid-cols-7 md:items-center text-center gap-1 bg-[#11151D] backdrop-blur-[28px] md:h-[55px] md:text-[15px] font-light text-[#C9CED6] md:mt-1 shadow-2xl shadow-[#0000001a] px-2">
         <div className="w-full flex items-center justify-center gap-2 col-span-2 overflow-hidden ">
-          <p>{urls.shortUrl}</p>
+          <p>{shortUrl}</p>
 
           <button
             onClick={handleCopy}
@@ -57,7 +57,7 @@ const DashboardDataItem = ({
           <div>
             <img src={iconUrl} alt="siteIcon" className="size-7" />
           </div>
-          <p className="text-start w-full truncate  ">{urls.originalUrl}</p>
+          <p className="text-start w-full truncate  ">{urls.orignalUrl}</p>
         </div>
         <div className="w-full">
           <p>{urls.status}</p>
@@ -103,7 +103,7 @@ const DashboardDataItem = ({
           >
             {/* Left side: URL + Copy icon */}
             <div className="flex items-center gap-2 flex-grow">
-              <span className="truncate">{urls.shortUrl}</span>
+              <span className="truncate">{shortUrl}</span>
 
               <div
                 onClick={(e) => {
