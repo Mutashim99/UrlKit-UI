@@ -33,7 +33,6 @@ const EditDialog = ({ open, onClose, url, onSave, updateLoading }) => {
           </DialogDescription>
         </DialogHeader>
 
-        {/* Dropdown value={status} onValueChange={setStatus} */}
         <Select value={status} onValueChange={setStatus}>
           <SelectTrigger className="w-full bg-[#0F1622] border border-[#353C4A] text-white">
             <SelectValue placeholder="Select status" />

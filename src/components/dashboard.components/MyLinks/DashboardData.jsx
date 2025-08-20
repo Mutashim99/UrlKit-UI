@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DashboardDataItem from "./DashboardDataItem";
 import EditDialog from "./EditDialog";
 import axios from "axios";
-import LocalHistorySkeleton from "../skeletons/LocalHistorySkeleton";
+import LocalHistorySkeleton from "../../skeletons/LocalHistorySkeleton";
 import { useDashboardStore } from "@/store/dashboard.store";
 import DeleteDialog from "./DeleteDialog";
 
@@ -13,7 +13,7 @@ const DashboardData = () => {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [selectedUrl, setSelectedUrl] = useState(null);
   const [updateLoading, setUpdateLoading] = useState(false);
-  const [deleteLoading, setDeleteLoading] = useState(false)
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const { urls, loadingUrls, getUrls } = useDashboardStore();
 
   // const getUrls = async () => {
@@ -48,11 +48,10 @@ const DashboardData = () => {
       const res = await axios.patch(`/user/dashboard/url/${selectedUrl.id}`, {
         newStatus: newStatus,
       });
-      
+
       await getUrls();
       console.log(res);
     } catch (e) {
-      
       console.log(e);
     }
     setUpdateLoading(false);
@@ -60,7 +59,7 @@ const DashboardData = () => {
   };
 
   const handleDeleteSave = async () => {
-    setDeleteLoading(true)
+    setDeleteLoading(true);
     try {
       const res = await axios.delete(`/user/dashboard/url/${selectedUrl.id}`);
       console.log(res);
@@ -68,7 +67,7 @@ const DashboardData = () => {
     } catch (e) {
       console.log(e);
     }
-    setDeleteLoading(false)
+    setDeleteLoading(false);
     setDeleteOpen(false);
   };
 
@@ -134,7 +133,7 @@ const DashboardData = () => {
         />
 
         <DeleteDialog
-        deleteLoading={deleteLoading}
+          deleteLoading={deleteLoading}
           open={deleteOpen}
           onClose={() => {
             setDeleteOpen(false);
