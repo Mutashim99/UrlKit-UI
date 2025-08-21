@@ -9,9 +9,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Settings, ChartNoAxesCombined, Link } from "lucide-react";
+import {ChartNoAxesCombined, Link } from "lucide-react";
+import { Settings as SettingsIcon } from "lucide-react";
 import DashboardData from "@/components/dashboard.components/MyLinks/DashboardData";
 import AnalyticsData from "@/components/dashboard.components/Analytics/AnalyticsData";
+import Settings  from "@/components/dashboard.components/Settings";
 
 const Dashboard = () => {
   return (
@@ -66,7 +68,7 @@ const Dashboard = () => {
                    after:bg-[#144EE3] after:scale-x-0 
                    data-[state=active]:after:scale-x-100 after:transition-transform after:duration-300"
               >
-                <Settings />
+                <SettingsIcon />
                 Settings
               </TabsTrigger>
             </TabsList>
@@ -75,7 +77,7 @@ const Dashboard = () => {
             <DashboardData />
           </TabsContent>
           <TabsContent value="Analytics"><AnalyticsData /></TabsContent>
-          <TabsContent value="Settings">SETTINGS HERE HERE</TabsContent>
+          <TabsContent value="Settings"><Settings/></TabsContent>
         </Tabs>
       </div>
     </div>
