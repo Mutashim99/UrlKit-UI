@@ -11,6 +11,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Settings, ChartNoAxesCombined, Link } from "lucide-react";
 import DashboardData from "@/components/dashboard.components/MyLinks/DashboardData";
+import AnalyticsData from "@/components/dashboard.components/Analytics/AnalyticsData";
 
 const Dashboard = () => {
   return (
@@ -48,7 +49,7 @@ const Dashboard = () => {
               </TabsTrigger>
               <TabsTrigger
                 value="Analytics"
-                className="relative px-4 py-2 text-sm font-bold bg-transparent text-gray-400 data-[state=active]:text-gray-400 data-[state=active]:bg-transparent
+                className="relative px-4 py-2 text-sm font-bold bg-transparent text-gray-300 data-[state=active]:text-gray-400 data-[state=active]:bg-transparent
                    transition-colors duration-200 
                    after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] 
                    after:bg-[#144EE3] after:scale-x-0 
@@ -59,7 +60,7 @@ const Dashboard = () => {
               </TabsTrigger>
               <TabsTrigger
                 value="Settings"
-                className="relative px-4 py-2 text-sm font-bold bg-transparent text-gray-400 data-[state=active]:text-gray-400 data-[state=active]:bg-transparent
+                className="relative px-4 py-2 text-sm font-bold bg-transparent text-gray-300 data-[state=active]:text-gray-400 data-[state=active]:bg-transparent
                    transition-colors duration-200 
                    after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] 
                    after:bg-[#144EE3] after:scale-x-0 
@@ -73,7 +74,7 @@ const Dashboard = () => {
           <TabsContent value="My Links">
             <DashboardData />
           </TabsContent>
-          <TabsContent value="Analytics">ANALYTICS HERE</TabsContent>
+          <TabsContent value="Analytics"><AnalyticsData /></TabsContent>
           <TabsContent value="Settings">SETTINGS HERE HERE</TabsContent>
         </Tabs>
       </div>

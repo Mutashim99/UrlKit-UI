@@ -7,24 +7,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
-const DashboardDataItem = ({
-  urls,
-  onEdit,
-  onDelete
-}) => {
+
+const DashboardDataItem = ({ urls, onEdit, onDelete }) => {
   const [copied, setCopied] = useState(false);
   const domain = new URL(urls.orignalUrl).hostname;
   const iconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
-  const shortUrl  = `http://localhost:5173/${urls.shortSlug}`
+  const shortUrl = `${window.location.origin}/${urls.shortSlug}`;
   const handleCopy = () => {
     try {
       navigator.clipboard.writeText(shortUrl);
@@ -67,11 +56,22 @@ const DashboardDataItem = ({
           <p>{new Date(urls.createdAt).toLocaleString()}</p>
         </div>
         <div className="w-full flex gap-2 items-center justify-center">
-
-          <Pencil onClick={()=>{onEdit(urls)}} className="h-4 w-4" />
-          <Trash onClick={()=>{onDelete(urls)}} className="h-4 w-4" />
-
-         
+          <div
+            onClick={() => {
+              onEdit(urls);
+            }}
+            className="p-2 bg-[#181E29] border-2 border-[#353C4A] flex items-center justify-center rounded-full "
+          >
+            <Pencil className="h-4 w-4" />
+          </div>
+          <div
+            onClick={() => {
+              onDelete(urls);
+            }}
+            className="p-2 bg-[#181E29] border-2 border-[#353C4A] flex items-center justify-center rounded-full "
+          >
+            <Trash className="h-4 w-4" />
+          </div>
         </div>
       </div>
 
@@ -131,18 +131,24 @@ const DashboardDataItem = ({
             <p>{new Date(urls.createdAt).toLocaleString()}</p>
 
             <p className="font-medium text-muted-foreground">Action:</p>
-            <Dialog>
-              <DialogTrigger>Open</DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Are you absolutely sure?</DialogTitle>
-                  <DialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
-                  </DialogDescription>
-                </DialogHeader>
-              </DialogContent>
-            </Dialog>
+            <div className="flex items-center justify-start gap-3 ">
+              <div
+              onClick={() => {
+                onEdit(urls);
+              }}
+              className="p-2 bg-[#181E29] border-2 border-[#353C4A] flex items-center justify-center rounded-full "
+            >
+              <Pencil className="h-3 w-3" />
+            </div>
+            <div
+              onClick={() => {
+                onDelete(urls);
+              }}
+              className="p-2 bg-[#181E29] border-2 border-[#353C4A] flex items-center justify-center rounded-full "
+            >
+              <Trash className="h-3 w-3" />
+            </div>
+            </div>
           </AccordionContent>
         </AccordionItem>
       </Accordion>

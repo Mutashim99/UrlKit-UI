@@ -11,7 +11,6 @@ export const useDashboardStore = create((set) => ({
       const res = await axios.get("user/dashboard/urls");
       set({ urls: res.data, loadingUrls: false });
     } catch (e) {
-      console.log(e);
       set({ loadingUrls: false });
     }
   },

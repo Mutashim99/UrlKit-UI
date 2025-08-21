@@ -16,19 +16,6 @@ const DashboardData = () => {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const { urls, loadingUrls, getUrls } = useDashboardStore();
 
-  // const getUrls = async () => {
-  //   setLoadingurls(true);
-
-  //   try {
-  //     const res = await axios.get("user/dashboard/urls");
-  //     setUrls(res.data);
-  //     console.log(res);
-  //     setLoadingurls(false);
-  //   } catch (e) {
-  //     setLoadingurls(false);
-  //     console.log(e);
-  //   }
-  // };
 
   useEffect(() => {
     getUrls();
