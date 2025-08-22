@@ -287,14 +287,15 @@ const UrlInput = () => {
             <input
               disabled={!customExpireEnabled}
               type="datetime-local"
-              className=" text-[#C9CED6]  p-2 rounded-md outline-0  disabled:cursor-not-allowed"
-              value={expiresAt}
+              className="text-[#C9CED6] p-2 rounded-md outline-0 disabled:cursor-not-allowed"
+              value={expiresAt ? expiresAt.slice(0, 16) : ""} 
               onChange={(e) => {
-                const local = new Date(e.target.value); // interpret as local time
-                const utcIso = local.toISOString(); // convert to UTC ISO
+                const local = new Date(e.target.value); 
+                const utcIso = local.toISOString(); 
                 setExpiresAt(utcIso);
               }}
             />
+            {console.log(expiresAt)}
           </div>
         </div>
       </div>
