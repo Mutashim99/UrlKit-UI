@@ -17,7 +17,7 @@ const LocalHistoryItems = ({
   const [copied, setCopied] = useState(false);
   const domain = new URL(orignalUrl).hostname ;
   const iconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
-  const shortUrl  = `http://localhost:5173/${shortSlug}`
+  const shortUrl  = `${window.location.origin}/${shortSlug}`
 
   const handleCopy = () => {
     try {
