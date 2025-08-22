@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -7,51 +7,69 @@ import {
   DialogTrigger,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Trash2, User, Lock } from "lucide-react";
+import { Trash2, User, Lock, Loader2 } from "lucide-react";
 import axios from "axios";
 import useAuthStore from "@/store/auth.store";
+import { toast } from "sonner"; 
 
 const Settings = () => {
   const [newUserName, setNewUserName] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [loadingResponse, setLoadingResponse] = useState(false);
+  const [openUsername, setOpenUsername] = useState(false);
+  const [openPassword, setOpenPassword] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+
   const { accountDelete } = useAuthStore();
+
   const handleUserNameEdit = async (e) => {
     e.preventDefault();
     setLoadingResponse(true);
     try {
-      const res = await axios.patch("/user/dashboard/me/username", {
+      await axios.patch("/user/dashboard/me/username", {
         newUserName: newUserName,
       });
-      console.log(res);
+      toast.success("Username updated successfully");
+      setOpenUsername(false);
     } catch (e) {
       console.log(e);
+      toast.error("Failed to update username");
     }
     setLoadingResponse(false);
   };
+
   const handlePasswordEdit = async (e) => {
     e.preventDefault();
     setLoadingResponse(true);
     try {
-      const res = await axios.patch("/user/dashboard/me/password", {
+      await axios.patch("/user/dashboard/me/password", {
         currentPassword: currentPassword,
         newPassword: newPassword,
       });
-      console.log(res);
+      toast.success("Password updated successfully");
+      setOpenPassword(false);
     } catch (e) {
       console.log(e);
+      toast.error("Failed to update password");
     }
     setLoadingResponse(false);
   };
+
   const handleAccountDelete = async () => {
     setLoadingResponse(true);
     try {
       await accountDelete();
+      toast.success("Account deleted permanently");
+      setOpenDelete(false);
+    } catch (e) {
+      console.log(e);
+      toast.error("Failed to delete account ");
     } finally {
       setLoadingResponse(false);
     }
   };
+
   return (
     <div className="w-full py-4 px-4 md:min-h-[calc(100vh-364px)] min-h-[calc(100vh-361px)]">
       <div className="max-w-3xl mx-auto space-y-8">
@@ -63,6 +81,7 @@ const Settings = () => {
         </div>
 
         <div className="bg-[#181E29] border border-[#2A3140] rounded-2xl shadow-lg divide-y divide-[#2A3140]">
+          {/* Username */}
           <div className="flex items-center justify-between p-6">
             <div className="flex items-center gap-3">
               <div className="bg-[#0F1623] p-3 rounded-md">
@@ -75,7 +94,7 @@ const Settings = () => {
                 </p>
               </div>
             </div>
-            <Dialog>
+            <Dialog open={openUsername} onOpenChange={setOpenUsername}>
               <DialogTrigger className="text-sm px-4 py-2 rounded-md bg-[#1f6feb] hover:bg-[#2563eb] text-white transition">
                 Change
               </DialogTrigger>
@@ -95,16 +114,19 @@ const Settings = () => {
                     onChange={(e) => setNewUserName(e.target.value)}
                   />
                   <button
-                    className="w-full bg-[#1f6feb] hover:bg-[#2563eb] text-white py-2 rounded-md font-medium transition"
+                    className="w-full flex items-center justify-center gap-2 bg-[#1f6feb] hover:bg-[#2563eb] text-white py-2 rounded-md font-medium transition"
                     type="submit"
+                    disabled={loadingResponse}
                   >
+                    {loadingResponse && (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    )}
                     Save
                   </button>
                 </form>
               </DialogContent>
             </Dialog>
           </div>
-
           <div className="flex items-center justify-between p-6">
             <div className="flex items-center gap-3">
               <div className="bg-[#0F1623] p-3 rounded-md">
@@ -117,7 +139,7 @@ const Settings = () => {
                 </p>
               </div>
             </div>
-            <Dialog>
+            <Dialog open={openPassword} onOpenChange={setOpenPassword}>
               <DialogTrigger className="text-sm px-4 py-2 rounded-md bg-[#1f6feb] hover:bg-[#2563eb] text-white transition">
                 Update
               </DialogTrigger>
@@ -144,7 +166,14 @@ const Settings = () => {
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                   />
-                  <button className="w-full bg-[#1f6feb] hover:bg-[#2563eb] text-white py-2 rounded-md font-medium transition">
+                  <button
+                    className="w-full flex items-center justify-center gap-2 bg-[#1f6feb] hover:bg-[#2563eb] text-white py-2 rounded-md font-medium transition"
+                    type="submit"
+                    disabled={loadingResponse}
+                  >
+                    {loadingResponse && (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    )}
                     Save
                   </button>
                 </form>
@@ -153,6 +182,7 @@ const Settings = () => {
           </div>
         </div>
 
+        {/* Danger Zone */}
         <div className="bg-[#181E29] border border-[#2A3140] rounded-2xl shadow-lg p-6">
           <h2 className="text-lg font-semibold text-red-400 flex items-center gap-2">
             <Trash2 className="w-5 h-5" /> Danger Zone
@@ -161,7 +191,7 @@ const Settings = () => {
             Deleting your account will remove all your data permanently. This
             action cannot be undone.
           </p>
-          <Dialog>
+          <Dialog open={openDelete} onOpenChange={setOpenDelete}>
             <DialogTrigger className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition">
               Delete Account
             </DialogTrigger>
@@ -176,9 +206,13 @@ const Settings = () => {
 
               <div className="flex justify-center md:justify-end gap-3 mt-6">
                 <button
-                  className="px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 text-white transition"
+                  className="px-4 py-2 flex items-center justify-center gap-2 rounded-md bg-red-600 hover:bg-red-700 text-white transition"
                   onClick={handleAccountDelete}
+                  disabled={loadingResponse}
                 >
+                  {loadingResponse && (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  )}
                   Delete
                 </button>
               </div>
