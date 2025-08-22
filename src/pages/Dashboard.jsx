@@ -11,8 +11,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {ChartNoAxesCombined, Link } from "lucide-react";
 import { Settings as SettingsIcon } from "lucide-react";
-import DashboardData from "@/components/dashboard.components/mylinks/DashboardData";
-import AnalyticsData from "@/components/dashboard.components/analytics/AnalyticsData";
+import DashboardData from "@/components/dashboard.components/MyLinks/DashboardData";
+import AnalyticsData from "@/components/dashboard.components/Analytics/AnalyticsData";
 import Settings  from "@/components/dashboard.components/Settings";
 
 const Dashboard = () => {
