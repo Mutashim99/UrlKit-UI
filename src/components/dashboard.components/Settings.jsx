@@ -21,7 +21,7 @@ const Settings = () => {
   const [openPassword, setOpenPassword] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
 
-  const { accountDelete } = useAuthStore();
+  const { accountDelete ,fetchCurrentUser} = useAuthStore();
 
   const handleUserNameEdit = async (e) => {
     e.preventDefault();
@@ -30,6 +30,7 @@ const Settings = () => {
       await axios.patch("/user/dashboard/me/username", {
         newUserName: newUserName,
       });
+      await fetchCurrentUser()
       toast.success("Username updated successfully");
       setOpenUsername(false);
     } catch (e) {
