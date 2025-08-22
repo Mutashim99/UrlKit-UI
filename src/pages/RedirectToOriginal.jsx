@@ -24,8 +24,8 @@ const RedirectToOriginal = () => {
         const url = res.data?.originalUrl;
         setOriginalUrl(url);
 
-        const safetyRes = await axios.post("/check-url-safety", { url });
-        const safetyData = safetyRes.data; // use this for immediate checks
+        const safetyRes = await axios.post("/url/check-url-safety", { url });
+        const safetyData = safetyRes.data; 
         setSafety(safetyData);
 
         if (!url) {
