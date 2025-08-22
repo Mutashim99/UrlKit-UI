@@ -5,10 +5,25 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogDescription
 } from "@/components/ui/dialog";
 import { Trash2, User, Lock } from "lucide-react";
 
 const Settings = () => {
+  const [newUserName, setNewUserName] = useState("")
+  const [currentPassword, setCurrentPassword] = useState("")
+  const [newPassword, setNewPassword] = useState("")
+  const [loadingResponse, setLoadingResponse] = useState(false)
+
+  const handleUserNameEdit = () =>{
+
+  }
+  const handlePasswordEdit = () =>{
+
+  }
+  const handleAccountDelete = () =>{
+
+  }
   return (
     <div className="w-full py-4 px-4 md:min-h-[calc(100vh-364px)] min-h-[calc(100vh-361px)]">
       <div className="max-w-3xl mx-auto space-y-8">
@@ -20,7 +35,6 @@ const Settings = () => {
         </div>
 
         <div className="bg-[#181E29] border border-[#2A3140] rounded-2xl shadow-lg divide-y divide-[#2A3140]">
-
           <div className="flex items-center justify-between p-6">
             <div className="flex items-center gap-3">
               <div className="bg-[#0F1623] p-3 rounded-md">
@@ -40,6 +54,9 @@ const Settings = () => {
               <DialogContent className="bg-[#181E29] border border-[#2A3140] text-white rounded-2xl">
                 <DialogHeader>
                   <DialogTitle>Change Username</DialogTitle>
+                  <DialogDescription className="text-gray-400">
+                    Enter your new username and save changes.
+                  </DialogDescription>
                 </DialogHeader>
                 <form className="space-y-4 mt-4">
                   <input
@@ -74,6 +91,10 @@ const Settings = () => {
               <DialogContent className="bg-[#181E29] border border-[#2A3140] text-white rounded-2xl">
                 <DialogHeader>
                   <DialogTitle>Change Password</DialogTitle>
+                  <DialogDescription className="text-gray-400">
+                    Update your password by entering your current and new
+                    password.
+                  </DialogDescription>
                 </DialogHeader>
                 <form className="space-y-4 mt-4">
                   <input
@@ -95,7 +116,6 @@ const Settings = () => {
           </div>
         </div>
 
-
         <div className="bg-[#181E29] border border-[#2A3140] rounded-2xl shadow-lg p-6">
           <h2 className="text-lg font-semibold text-red-400 flex items-center gap-2">
             <Trash2 className="w-5 h-5" /> Danger Zone
@@ -111,12 +131,13 @@ const Settings = () => {
             <DialogContent className="bg-[#181E29] border border-[#2A3140] text-white rounded-2xl">
               <DialogHeader>
                 <DialogTitle>Confirm Deletion</DialogTitle>
+                <DialogDescription className="text-gray-400 text-sm">
+                  This action cannot be undone. Deleting your account will erase
+                  all data permanently.
+                </DialogDescription>
               </DialogHeader>
-              <p className="text-gray-400 text-sm">
-                Are you absolutely sure you want to delete your account? This
-                action is irreversible.
-              </p>
-              <div className="flex justify-end gap-3 mt-6">
+              
+              <div className="flex justify-center md:justify-end gap-3 mt-6">
                 <button className="px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 text-white transition">
                   Delete
                 </button>

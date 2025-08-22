@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import axios from "axios";
 
-//axios.defaults.baseURL = "https://urlkit-production.up.railway.app/api";
-axios.defaults.baseURL = "http://localhost:8080/api";
+axios.defaults.baseURL = "https://urlkitapp-dqezfjcrahh0dyhu.southeastasia-01.azurewebsites.net/api";
+//axios.defaults.baseURL = "http://localhost:8080/api";
 axios.defaults.withCredentials = true;
 
 const useAuthStore = create((set) => ({
