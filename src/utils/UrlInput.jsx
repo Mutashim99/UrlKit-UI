@@ -295,7 +295,6 @@ const UrlInput = () => {
                 setExpiresAt(utcIso);
               }}
             />
-            {console.log(expiresAt)}
           </div>
         </div>
       </div>

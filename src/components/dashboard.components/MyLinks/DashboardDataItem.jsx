@@ -8,7 +8,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-
 const DashboardDataItem = ({ urls, onEdit, onDelete }) => {
   const [copied, setCopied] = useState(false);
   const domain = new URL(urls.orignalUrl).hostname;
@@ -58,12 +57,20 @@ const DashboardDataItem = ({ urls, onEdit, onDelete }) => {
         <div className="w-full flex gap-2 items-center justify-center">
           <div
             onClick={() => {
-              onEdit(urls);
+              if (urls.status !== "EXPIRED") {
+                onEdit(urls);
+              }
             }}
-            className="p-2 bg-[#181E29] border-2 border-[#353C4A] flex items-center justify-center rounded-full "
+            className={`p-2 border-2 flex items-center justify-center rounded-full 
+    ${
+      urls.status === "EXPIRED"
+        ? "bg-gray-600 border-gray-500 cursor-not-allowed opacity-50"
+        : "bg-[#181E29] border-[#353C4A] cursor-pointer hover:bg-[#232b3a]"
+    }`}
           >
             <Pencil className="h-4 w-4" />
           </div>
+
           <div
             onClick={() => {
               onDelete(urls);
@@ -133,21 +140,21 @@ const DashboardDataItem = ({ urls, onEdit, onDelete }) => {
             <p className="font-medium text-muted-foreground">Action:</p>
             <div className="flex items-center justify-start gap-3 ">
               <div
-              onClick={() => {
-                onEdit(urls);
-              }}
-              className="p-2 bg-[#181E29] border-2 border-[#353C4A] flex items-center justify-center rounded-full "
-            >
-              <Pencil className="h-3 w-3" />
-            </div>
-            <div
-              onClick={() => {
-                onDelete(urls);
-              }}
-              className="p-2 bg-[#181E29] border-2 border-[#353C4A] flex items-center justify-center rounded-full "
-            >
-              <Trash className="h-3 w-3" />
-            </div>
+                onClick={() => {
+                  onEdit(urls);
+                }}
+                className="p-2 bg-[#181E29] border-2 border-[#353C4A] flex items-center justify-center rounded-full "
+              >
+                <Pencil className="h-3 w-3" />
+              </div>
+              <div
+                onClick={() => {
+                  onDelete(urls);
+                }}
+                className="p-2 bg-[#181E29] border-2 border-[#353C4A] flex items-center justify-center rounded-full "
+              >
+                <Trash className="h-3 w-3" />
+              </div>
             </div>
           </AccordionContent>
         </AccordionItem>

@@ -12,7 +12,6 @@ const useAuthStore = create((set) => ({
 
   fetchCurrentUser: async () => {
     set({ isAuthenticated: false, currentUser: null, loading: true });
-
     try {
       const res = await axios.get("/user/dashboard/me");
       console.log("[store] response:", res.data);
@@ -39,6 +38,15 @@ const useAuthStore = create((set) => ({
     set({ isAuthenticated: false, currentUser: null });
     console.log("after set:", useAuthStore.getState());
   },
+  accountDelete : async ()=>{
+    try {
+      const res = await axios.delete("/user/dashboard/me/");
+      console.log(res);
+      set({ isAuthenticated: false, currentUser: null});
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }));
 
 export default useAuthStore;
