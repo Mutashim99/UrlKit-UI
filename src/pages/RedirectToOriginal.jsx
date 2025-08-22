@@ -14,20 +14,19 @@ const RedirectToOriginal = () => {
   const { slug } = useParams();
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [safety, setSafety] = useState(null); 
+  const [safety, setSafety] = useState(null);
   const [originalUrl, setOriginalUrl] = useState(null);
 
   useEffect(() => {
     const fetchAndCheck = async () => {
       try {
-        
         const res = await axios.get(`/url/${slug}?preview=true`);
         const url = res.data?.originalUrl;
         setOriginalUrl(url);
 
-        
         const safetyRes = await axios.post("/check-url-safety", { url });
-        setSafety(safetyRes.data);
+        const safetyData = safetyRes.data; // use this for immediate checks
+        setSafety(safetyData);
 
         if (!url) {
           setErrorMsg("Original URL not found. Cannot proceed.");
@@ -35,14 +34,13 @@ const RedirectToOriginal = () => {
           return;
         }
 
-        if (!safety || typeof safety.safe !== "boolean") {
+        if (!safetyData || typeof safetyData.safe !== "boolean") {
           setErrorMsg("Failed to verify URL safety.");
           setLoading(false);
           return;
         }
 
-        if (safetyRes.data.safe) {
-          
+        if (safetyData.safe) {
           setTimeout(() => {
             window.location.href = url;
           }, 2000);
@@ -78,7 +76,6 @@ const RedirectToOriginal = () => {
     );
   }
 
-  
   if (safety && !safety.safe) {
     return (
       <div className="h-screen flex flex-col items-center justify-center bg-[#0B101B] text-white gap-4 text-center px-4">
@@ -103,7 +100,6 @@ const RedirectToOriginal = () => {
     );
   }
 
-  
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-[#0B101B] text-white gap-3">
       <ShieldCheck className="h-12 w-12 text-green-400" />
