@@ -9,6 +9,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import useAuthStore from "./store/auth.store";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import ResendVerificationEmail from "./pages/ResendVerificationEmail";
+import RedirectToOriginal from "./pages/RedirectToOriginal";
 const App = () => {
   const fetchCurrentUser = useAuthStore((s) => s.fetchCurrentUser);
 
@@ -37,6 +38,7 @@ const App = () => {
           path="/resend-verification-email"
           element={<ResendVerificationEmail />}
         />
+        <Route path="/:slug" element={<RedirectToOriginal/>} />
       </Routes>
     </>
   );

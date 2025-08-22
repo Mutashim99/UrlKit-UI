@@ -285,6 +285,7 @@ const UrlInput = () => {
           </div>
           <div className="flex rounded-[48px] items-center justify-center h-10 w-full bg-[#181E29]  border-4 border-[#353C4A]">
             <input
+            placeholder="Enter Expiry Date and Time"
               disabled={!customExpireEnabled}
               type="datetime-local"
               className="text-[#C9CED6] p-2 rounded-md outline-0 disabled:cursor-not-allowed"
