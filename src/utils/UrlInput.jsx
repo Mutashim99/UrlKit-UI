@@ -148,9 +148,9 @@ const UrlInput = () => {
         {
           loading: "Shortening your link...",
           success: (res) => {
-            getUrls()
+            getUrls();
             console.log(res);
-            saveSlugs(res.data.slug)
+            saveSlugs(res.data.slug);
             setOriginalUrl("");
             setCustomSlug("");
             setExpiresAt("");
@@ -167,8 +167,6 @@ const UrlInput = () => {
       console.error(error);
     }
   };
-
-  
 
   return (
     <>
@@ -291,7 +289,11 @@ const UrlInput = () => {
               type="datetime-local"
               className=" text-[#C9CED6]  p-2 rounded-md outline-0  disabled:cursor-not-allowed"
               value={expiresAt}
-              onChange={(e) => setExpiresAt(e.target.value)}
+              onChange={(e) => {
+                const local = new Date(e.target.value); // interpret as local time
+                const utcIso = local.toISOString(); // convert to UTC ISO
+                setExpiresAt(utcIso);
+              }}
             />
           </div>
         </div>
