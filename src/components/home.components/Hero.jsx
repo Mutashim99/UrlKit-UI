@@ -14,12 +14,10 @@ const Hero = () => {
               "linear-gradient(to right, #144EE3, #EB568E, #A353AA, #144EE3)",
           }}
         >
-          Shorten Your Loooong Links :)
+          Free URL Shortener With Analytics :)
         </h1>
-        <p className="text-[16px] md:text-[18px] font-light max-w-[634px] text-center leading-relaxed text-[#C9CED6]">
-          UrlKit is your intelligent link companion — combining lightning-fast
-          URL shortening with the power of AI to Secure, Manage, and Optimize
-          your links effortlessly.
+        <p className="text-[16px] md:text-[17px] font-light max-w-[650px] text-center leading-relaxed text-[#C9CED6]">
+          UrlKit is a free URL shortener with no login required. Create short links instantly, add custom aliases, set expiry dates, track clicks with real-time analytics now with AI-powered security.
         </p>
 
         <div className="w-full max-w-[634px] flex flex-col gap-4">

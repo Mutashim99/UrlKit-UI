@@ -54,8 +54,7 @@ const LocalHistory = () => {
         <div>
           {loadinglocalhistory ? <LocalHistorySkeleton /> : localHistoryData.length === 0 ? (
             <p className="text-center bg-[#0e131ee0] font-medium  text-[#C9CED6] text-sm py-8">
-              You haven’t created any short URLs yet. Start creating links to
-              see your history here.
+              You haven’t created any Free short URLs yet. Start creating Free Shorten links to see your history here. No login is required!
             </p>
           ) : (
             localHistoryData.map((url, index) => (

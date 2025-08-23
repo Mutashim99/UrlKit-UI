@@ -1,12 +1,171 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- ===== Basic Meta ===== -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/urlkitlogo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UrlKit - AI URL Shortener</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ===== SEO Core ===== -->
+    <title>UrlKit – Free URL Shortener (No Login) | Custom Alias, Expiry & Analytics</title>
+    <meta name="description" content="Shorten links free with UrlKit. No login required. Create custom aliases, set expiry dates, and track clicks with secure analytics. Fast, simple, and privacy-friendly." />
+    <meta name="keywords" content="free url shortener,no login url shortener,anonymous url shortener,link shortener,custom alias short url,expiry links,secure redirects,track clicks,link analytics,free link shortener,branded short links,AI url shortener" />
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+    <link rel="canonical" href="https://urlkit.site/" />
+
+    <!-- Optional: language targeting -->
+    <link rel="alternate" href="https://urlkit.site/" hreflang="en" />
+    <meta http-equiv="Content-Language" content="en" />
+
+    <!-- ===== Brand / Icons ===== -->
+    <link rel="icon" type="image/png" href="/urlkitlogo.png" />
+    <!-- Optional PWA bits -->
+    <!-- <link rel="manifest" href="/manifest.json" /> -->
+    <meta name="theme-color" content="#0B101B" />
+    <meta name="application-name" content="UrlKit" />
+    <meta name="apple-mobile-web-app-title" content="UrlKit" />
+
+    <!-- ===== Open Graph / Facebook / LinkedIn / WhatsApp ===== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://urlkit.site/" />
+    <meta property="og:title" content="UrlKit – Free URL Shortener (No Login)" />
+    <meta property="og:description" content="Free, fast & secure link shortener. No login required. Custom alias, expiry, and click analytics built in." />
+    <meta property="og:image" content="https://urlkit.site/og-preview.png" />
+    <meta property="og:site_name" content="UrlKit" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ===== Twitter Cards ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://urlkit.site/" />
+    <meta name="twitter:title" content="UrlKit – Free URL Shortener (No Login)" />
+    <meta name="twitter:description" content="Shorten links for free. Custom alias, expiry & analytics. No login. Secure & fast." />
+    <meta name="twitter:image" content="https://urlkit.site/og-preview.png" />
+    <!-- Optional: your handle -->
+    <!-- <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE" /> -->
+
+    <!-- ===== Performance Hints (optional) ===== -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <!-- <link rel="preload" href="/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin /> -->
+
+    <!-- ===== Ownership Verification (fill in when you add Search Console/Bing) ===== -->
+    <!-- <meta name="google-site-verification" content="YOUR_GOOGLE_TOKEN" /> -->
+    <!-- <meta name="msvalidate.01" content="YOUR_BING_TOKEN" /> -->
+
+    <!-- ===== Structured Data: Organization ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "UrlKit",
+      "url": "https://urlkit.site/",
+      "logo": "https://urlkit.site/urlkitlogo.png",
+      "sameAs": [
+        "https://twitter.com/YOUR_TWITTER",
+        "https://github.com/YOUR_GITHUB"
+      ]
+    }
+    </script>
+
+    <!-- ===== Structured Data: WebSite (sitelinks/search intent) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "UrlKit",
+      "url": "https://urlkit.site/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://urlkit.site/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- ===== Structured Data: SoftwareApplication (SaaS/Product) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "UrlKit",
+      "applicationCategory": "Utility",
+      "operatingSystem": "Web",
+      "url": "https://urlkit.site/",
+      "image": "https://urlkit.site/og-preview.png",
+      "description": "Free URL shortener with no login. Create custom aliases, set expiry, and track clicks with secure analytics. Fast, simple, and privacy-friendly.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- ===== Structured Data: FAQ (rich results; includes your key terms) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is UrlKit free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. UrlKit is a free URL shortener with unlimited shortening. No login is required to create short links."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an account or login to shorten links?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No login required. Paste your long URL, generate a short link instantly, and share. It’s anonymous and fast."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I create a custom alias or slug?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. UrlKit supports custom aliases so your short URLs are branded and memorable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does UrlKit support link expiry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can set an expiry date and time for your short links to automatically disable access after a deadline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I track clicks and view analytics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. UrlKit provides secure click analytics so you can monitor total clicks, engagement, and more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is UrlKit secure and privacy-friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. UrlKit uses secure redirects and collects minimal data to provide essential analytics while respecting privacy."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
+
   <body>
+    <!-- Helpful for non-JS environments and keyword support (Google can render JS, but this is safe) -->
+    <noscript>
+      UrlKit – free URL shortener with no login. Create custom alias short links,
+      set expiry, and track clicks with secure analytics.
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
