@@ -6,19 +6,19 @@ import LocalHistorySkeleton from "../skeletons/LocalHistorySkeleton";
 import useAuthStore from "@/store/auth.store";
 
 const LocalHistory = () => {
-  const [loadinglocalhistory, setLoadinglocalhistory] = useState(false)
+  const [loadinglocalhistory, setLoadinglocalhistory] = useState(false);
   const [localHistoryData, setlocalHistoryData] = useState([]);
-  const { isAuthenticated ,loading} = useAuthStore();
+  const { isAuthenticated, loading } = useAuthStore();
 
   const slugs = useSlugStore((state) => state.slugs);
   const getLocalHistory = async () => {
-    setLoadinglocalhistory(true)
+    setLoadinglocalhistory(true);
     try {
       const res = await axios.post("/url/history/local", { slugs: slugs });
       setlocalHistoryData(res.data);
-      setLoadinglocalhistory(false)
+      setLoadinglocalhistory(false);
     } catch (e) {
-      setLoadinglocalhistory(false)
+      setLoadinglocalhistory(false);
     }
   };
   useEffect(() => {
@@ -28,7 +28,9 @@ const LocalHistory = () => {
   }, [slugs]);
 
   const visibleHistory = !isAuthenticated
-    ? localHistoryData.slice(-5)
+    ? localHistoryData
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) 
+        .slice(0, 5)
     : localHistoryData;
 
   return (
@@ -58,9 +60,12 @@ const LocalHistory = () => {
           </div>
         </div>
         <div>
-          {loadinglocalhistory ? <LocalHistorySkeleton /> : localHistoryData.length === 0 ? (
+          {loadinglocalhistory ? (
+            <LocalHistorySkeleton />
+          ) : localHistoryData.length === 0 ? (
             <p className="text-center bg-[#0e131ee0] font-medium  text-[#C9CED6] text-sm py-8">
-              You haven’t created any Free short URLs yet. Start creating Free Shorten links to see your history here. No login is required!
+              You haven’t created any Free short URLs yet. Start creating Free
+              Shorten links to see your history here. No login is required!
             </p>
           ) : (
             visibleHistory.map((url, index) => (
