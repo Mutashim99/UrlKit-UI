@@ -3,10 +3,12 @@ import LocalHistoryItems from "./LocalHistoryItems";
 import { useSlugStore } from "@/store/slug.store";
 import axios from "axios";
 import LocalHistorySkeleton from "../skeletons/LocalHistorySkeleton";
+import useAuthStore from "@/store/auth.store";
 
 const LocalHistory = () => {
   const [loadinglocalhistory, setLoadinglocalhistory] = useState(false)
   const [localHistoryData, setlocalHistoryData] = useState([]);
+  const { isAuthenticated ,loading} = useAuthStore();
 
   const slugs = useSlugStore((state) => state.slugs);
   const getLocalHistory = async () => {
@@ -24,6 +26,10 @@ const LocalHistory = () => {
       getLocalHistory();
     }
   }, [slugs]);
+
+  const visibleHistory = !isAuthenticated
+    ? localHistoryData.slice(-5)
+    : localHistoryData;
 
   return (
     <div className="w-full md:py-4 px-4">
@@ -57,7 +63,7 @@ const LocalHistory = () => {
               You haven’t created any Free short URLs yet. Start creating Free Shorten links to see your history here. No login is required!
             </p>
           ) : (
-            localHistoryData.map((url, index) => (
+            visibleHistory.map((url, index) => (
               <LocalHistoryItems key={index} {...url} />
             ))
           )}

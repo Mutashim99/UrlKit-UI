@@ -11,13 +11,13 @@ const Home = () => {
   
 
   const { isAuthenticated ,loading} = useAuthStore();
-  useEffect(() => {
-    if (!isAuthenticated) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   if (!isAuthenticated) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //   }
+  // }, [isAuthenticated]);
   return (
     // <div
     //   className={`w-full bg-[#0B101B] ${
