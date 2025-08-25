@@ -10,6 +10,8 @@ import useAuthStore from "./store/auth.store";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import ResendVerificationEmail from "./pages/ResendVerificationEmail";
 import RedirectToOriginal from "./pages/RedirectToOriginal";
+import { Analytics } from '@vercel/analytics/react';
+
 const App = () => {
   const fetchCurrentUser = useAuthStore((s) => s.fetchCurrentUser);
 
@@ -21,6 +23,7 @@ const App = () => {
   return (
     <>
       <Toaster />
+      <Analytics/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
