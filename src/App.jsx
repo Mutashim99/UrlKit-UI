@@ -10,6 +10,9 @@ import useAuthStore from "./store/auth.store";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import ResendVerificationEmail from "./pages/ResendVerificationEmail";
 import RedirectToOriginal from "./pages/RedirectToOriginal";
+import About from "./pages/About";
+import Blogs from "./pages/Blogs";
+import BlogDetail from "./pages/BlogDetail";
 import { Analytics } from '@vercel/analytics/react';
 
 const App = () => {
@@ -36,6 +39,9 @@ const App = () => {
         />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/signup" element={<Signup />} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/blogs" element={<Blogs/>} />
+        <Route path="/blogs/:slug" element={<BlogDetail />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route
           path="/resend-verification-email"
