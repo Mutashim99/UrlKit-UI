@@ -1,67 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://urlkit.site/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://urlkit.site/dashboard</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/why-use-url-shortener</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/ai-powered-url-shorteners-future</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/behind-the-scenes-building-urlkit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/hidden-complexity-short-links</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/ai-url-shorteners-vs-traditional</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/ai-making-internet-safer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/build-secure-url-shortener-ai</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/top-5-best-url-shorteners-2025</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/top-5-free-ai-powered-url-shorteners</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/best-url-shorteners-with-custom-domains</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
-    <loc>https://urlkit.site/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://urlkit.site/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-    <url>
-    <loc>https://urlkit.site/dashboard</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://urlkit.site/blogs/why-use-url-shortener</loc>
+    <loc>https://urlkit.site/blogs/url-shorteners-for-ab-testing</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://urlkit.site/blogs/ai-powered-url-shorteners-future</loc>
+    <loc>https://urlkit.site/blogs/geotargeting-with-short-urls</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://urlkit.site/blogs/behind-the-scenes-building-urlkit</loc>
+    <loc>https://urlkit.site/blogs/dynamic-links-for-mobile-apps</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://urlkit.site/blogs/hidden-complexity-short-links</loc>
+    <loc>https://urlkit.site/blogs/how-to-use-retargeting-pixels-on-short-links</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://urlkit.site/blogs/ai-url-shorteners-vs-traditional</loc>
+    <loc>https://urlkit.site/blogs/qr-codes-from-short-links-for-offline-marketing</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://urlkit.site/blogs/ai-making-internet-safer</loc>
+    <loc>https://urlkit.site/blogs/optimizing-link-in-bio-with-shorteners</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://urlkit.site/blogs/build-secure-url-shortener-ai</loc>
+    <loc>https://urlkit.site/blogs/utm-parameters-made-easy-with-url-shorteners</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://urlkit.site/blogs/top-5-best-url-shorteners-2025</loc>
+    <loc>https://urlkit.site/blogs/link-expiration-security-and-cleanup</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://urlkit.site/blogs/top-5-free-ai-powered-url-shorteners</loc>
+    <loc>https://urlkit.site/blogs/enterprise-url-shortening-solutions</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://urlkit.site/blogs/best-url-shorteners-with-custom-domains</loc>
+    <loc>https://urlkit.site/blogs/fighting-phishing-with-ai-short-links</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/shortening-links-for-sms-and-whatsapp-marketing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/best-short-urls-for-print-advertising</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/choosing-the-right-short-domain</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/url-shorteners-for-affiliate-marketing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/shortening-links-for-developers-and-apis</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/url-shorteners-for-better-email-marketing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/caching-and-speed-in-link-shorteners</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/tracking-clicks-without-compromising-privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/long-term-reliability-of-url-shorteners</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://urlkit.site/blogs/integrating-url-shorteners-with-slack-and-zapier</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
