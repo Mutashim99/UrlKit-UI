@@ -63,7 +63,7 @@ const Home = () => {
               <span className="text-[#144EE3] underline ">
                 <Link to={"auth/signup"}>Register Now</Link>
               </span>{" "}
-              to enjoy Unlimited History
+              to enjoy Detailed Analytics & Unlimited History
             </p>
           </div>
         </div>
