@@ -246,20 +246,16 @@ const UrlInput = () => {
                 <Switch
                   checked={customSlugEnabled}
                   onCheckedChange={(val) => {
-                    if (!isAuthenticated) {
-                      return;
-                    }
                     setCustomSlugEnabled(val);
                   }}
-                  disabled={!isAuthenticated}
                 />
               </div>
             </TooltipTrigger>
-            {!isAuthenticated && (
+            {/* {!isAuthenticated && (
               <TooltipContent>
                 <p className="text-lg font-bold">Login to use custom slugs!</p>
               </TooltipContent>
-            )}
+            )} */}
           </Tooltip>
           <span className="md:text-lg text-sm">Custom Slug / Alias</span>
           <Switch
