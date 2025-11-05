@@ -16,17 +16,18 @@ const RedirectToOriginal = () => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [safety, setSafety] = useState(null);
   const [originalUrl, setOriginalUrl] = useState(null);
+  const [modelBusyMsg, setModelBusyMsg] = useState(null);
 
   useEffect(() => {
     const fetchAndCheck = async () => {
-      try {
-        const res = await axios.get(`/url/${slug}?preview=true`);
-        const url = res.data?.originalUrl;
-        setOriginalUrl(url);
+      let url; 
 
-        const safetyRes = await axios.post("/url/check-url-safety", { url });
-        const safetyData = safetyRes.data; 
-        setSafety(safetyData);
+      try {
+       
+        
+        const res = await axios.get(`/url/${slug}?preview=true`);
+        url = res.data?.originalUrl;
+        setOriginalUrl(url); 
 
         if (!url) {
           setErrorMsg("Original URL not found. Cannot proceed.");
@@ -34,20 +35,57 @@ const RedirectToOriginal = () => {
           return;
         }
 
-        if (!safetyData || typeof safetyData.safe !== "boolean") {
-          setErrorMsg("Failed to verify URL safety.");
+        
+        try {
+          const safetyRes = await axios.post("/url/check-url-safety", { url });
+          const safetyData = safetyRes.data;
+          setSafety(safetyData);
+
+          if (!safetyData || typeof safetyData.safe !== "boolean") {
+            setErrorMsg("Failed to verify URL safety.");
+            setLoading(false);
+            return;
+          }
+
+          if (safetyData.safe) {
+            setTimeout(() => {
+              window.location.href = url;
+            }, 2000);
+          }
+
           setLoading(false);
-          return;
-        }
+        } catch (safetyErr) {
+       
+          const statusCode = safetyErr.response?.status;
 
-        if (safetyData.safe) {
-          setTimeout(() => {
-            window.location.href = url;
-          }, 2000);
-        }
+          
+          const transientErrorCodes = [
+            503, // Service Unavailable (Model Overloaded)
+            429, // Resource Exhausted (Rate Limited)
+            500, // Internal Server Error
+            504, // Gateway Timeout
+          ];
 
-        setLoading(false);
+          if (transientErrorCodes.includes(statusCode)) {
+           
+            setModelBusyMsg(
+              "The AI safety check is temporarily unavailable. We'll redirect you to the URL shortly..."
+            );
+
+            
+            setTimeout(() => {
+              window.location.href = url;
+            }, 3000); 
+          } else {
+            
+            setErrorMsg(
+              safetyErr.response?.data?.message || "Failed to check URL safety."
+            );
+          }
+          setLoading(false);
+        }
       } catch (err) {
+       
         setErrorMsg(err.response?.data?.message || "Unexpected error occurred");
         setLoading(false);
       }
@@ -62,6 +100,18 @@ const RedirectToOriginal = () => {
         <BrainCircuit className="h-12 w-12 animate-pulse text-purple-400" />
         <p className="text-gray-400">Checking link safety with AI…</p>
         <Loader2 className="h-6 w-6 animate-spin text-gray-500" />
+      </div>
+    );
+  }
+
+
+  if (modelBusyMsg) {
+    return (
+      <div className="h-screen flex flex-col items-center justify-center bg-[#0B101B] text-white gap-3 text-center px-4">
+        <BrainCircuit className="h-12 w-12 text-purple-400" />
+        <h2 className="text-lg font-semibold">AI Check Unavailable</h2>
+        <p className="text-gray-400">{modelBusyMsg}</p>
+        <Loader2 className="h-6 w-6 animate-spin text-gray-500 mt-2" />
       </div>
     );
   }
