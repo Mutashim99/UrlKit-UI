@@ -1,12 +1,42 @@
-# React + Vite
+# URLKit – AI-Powered URL Shortener
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Link: urlkit.site
 
-Currently, two official plugins are available:
+URLKit is a modern, production-ready URL shortener built with a focus on **security, scalability, and reliability**.  
+It provides full URL management, background job processing, and AI-based link safety checks.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Authentication & Dashboard** – Secure login and user-specific link management.  
+- **URL Management** – Create, update, delete, and customize short links.  
+- **Expiry & Scheduling** – Automatic cleanup of expired links via cron jobs.  
+- **Analytics** – Track click counts and monitor engagement.  
+- **Background Jobs** – Email notifications and other tasks processed with BullMQ and Redis.  
+- **AI-Powered Security** – Links are analyzed with Gemini API to detect phishing or spam.  
+
+---
+
+## Tech Stack
+
+- **Backend**: Node.js, Express, Prisma, PostgreSQL  
+- **Job Queue & Scheduling**: BullMQ, Redis, Cron Jobs  
+- **Frontend**: React, TailwindCSS, Zustand  
+- **AI Integration**: Google Gemini API  
+- **Auth**: JWT-based authentication  
+
+---
+
+## Roadmap
+
+- Advanced analytics (geo, device, browser stats)  
+- Admin dashboard for abuse monitoring  
+- Public API access  
+- Support for branded/custom domains  
+
+---
+
+## License  
+
+MIT License © 2025
