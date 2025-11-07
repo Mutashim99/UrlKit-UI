@@ -13,11 +13,11 @@ import RedirectToOriginal from "./pages/RedirectToOriginal";
 import About from "./pages/About";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const App = () => {
   const fetchCurrentUser = useAuthStore((s) => s.fetchCurrentUser);
-
 
   useEffect(() => {
     fetchCurrentUser();
@@ -26,7 +26,8 @@ const App = () => {
   return (
     <>
       <Toaster />
-      <Analytics/>
+      <SpeedInsights />
+      <Analytics />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -39,15 +40,15 @@ const App = () => {
         />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/signup" element={<Signup />} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/blogs" element={<Blogs/>} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:slug" element={<BlogDetail />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route
           path="/resend-verification-email"
           element={<ResendVerificationEmail />}
         />
-        <Route path="/:slug" element={<RedirectToOriginal/>} />
+        <Route path="/:slug" element={<RedirectToOriginal />} />
       </Routes>
     </>
   );
