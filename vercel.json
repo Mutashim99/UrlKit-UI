@@ -4,12 +4,5 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ],
-  "redirects": [
-    {
-      "source": "/ads.txt",
-      "destination": "https://srv.adstxtmanager.com/19390/urlkit.site",
-      "permanent": true
-    }
   ]
 }
