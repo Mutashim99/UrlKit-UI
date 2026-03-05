@@ -13,8 +13,7 @@ import RedirectToOriginal from "./pages/RedirectToOriginal";
 import About from "./pages/About";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
+
 
 const App = () => {
   const fetchCurrentUser = useAuthStore((s) => s.fetchCurrentUser);
@@ -26,8 +25,6 @@ const App = () => {
   return (
     <>
       <Toaster />
-      <SpeedInsights />
-      <Analytics />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
